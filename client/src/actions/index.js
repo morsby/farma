@@ -10,12 +10,8 @@ export const fetchDrugs = () => async dispatch => {
 	});
 };
 
-export const navActivate = active => {
-	return { type: actions.NAV_ACTIVATE, active: active };
-};
-
-export const navEnable = enabled => {
-	return { type: actions.NAV_ENABLE, enabled: enabled };
+export const navVisible = visible => {
+	return { type: actions.NAV_VISIBLE, active: visible };
 };
 
 export const navResponsive = responsive => {

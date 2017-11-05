@@ -14,36 +14,48 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { nav: true };
-
-		this.onClick = this.onClick.bind(this);
+		this.onResponsive = this.onResponsive.bind(this);
 	}
 
 	componentDidMount() {
 		this.props.fetchDrugs();
 	}
 
-	onClick() {
-		let curr = this.state.nav;
-		console.log(curr);
-		this.setState({ nav: !curr });
+	onResponsive(responsive) {
+		this.props.navResponsive(responsive);
 	}
 
 	render() {
-		let nav = '';
-		if (this.state.nav) {
+		/*	let nav = '';
+		if (
+			this.props.nav.visible ||
+			this.props.nav.responsive === 'multiple'
+		) {
 			nav = <Sidebar />;
+		} */
+
+		let priority = 'right';
+		if (this.props.nav.visible && this.props.nav.responsive === 'single') {
+			priority = 'left';
 		}
-		const priority = this.state.nav ? 'left' : 'right';
 
 		return (
 			<GrommetApp centered={false}>
-				<Split flex="right" priority={priority}>
-					{nav}
+				<Split
+					flex="right"
+					priority={priority}
+					onResponsive={this.onResponsive}
+				>
+					<Sidebar />
 					<Main />
 				</Split>
 			</GrommetApp>
 		);
 	}
 }
-export default connect(null, actions)(App);
+
+function mapStateToProps({ nav }) {
+	return { nav };
+}
+
+export default connect(mapStateToProps, actions)(App);
