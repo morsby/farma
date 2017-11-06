@@ -5,7 +5,13 @@ export default function(state = {}, action) {
 	switch (action.type) {
 		case actions.FETCH_DRUGS:
 			let drugs = action.payload.map(drug => {
-				return { ...drug, visible: false };
+				let hasInfo;
+				if (/\S/.test(drug.content)) {
+					hasInfo = true;
+				} else {
+					hasInfo = false;
+				}
+				return { ...drug, visible: false, hasInfo: hasInfo };
 			});
 
 			return _.mapKeys(drugs, '_id');

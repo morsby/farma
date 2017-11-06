@@ -6,6 +6,7 @@ import * as actions from '../../actions';
 import Menu from 'grommet/components/Menu';
 import List from 'grommet/components/List';
 import ListItem from 'grommet/components/ListItem';
+import CheckmarkIcon from 'grommet/components/icons/base/Checkmark';
 
 class DrugList extends Component {
 	constructor(props) {
@@ -25,20 +26,40 @@ class DrugList extends Component {
 			style = drug.important
 				? { ...style, fontWeight: 'bold' }
 				: { ...style };
+			style = drug.hasInfo
+				? { ...style }
+				: { ...style, color: 'rgb(122, 122, 122)' };
 
 			let onClick;
-			if (drug.content) {
+			if (drug.hasInfo) {
 				onClick = () => this.onClick(drug._id);
 			}
+
+			let selected;
+			if (drug.visible) {
+				selected = (
+					<span
+						style={{
+							position: 'absolute',
+							right: '10px',
+							float: 'right'
+						}}
+					>
+						<CheckmarkIcon />
+					</span>
+				);
+			}
+
 			return (
 				<ListItem
 					justify="between"
 					key={drug.name}
 					style={style}
-					wrap={true}
 					onClick={onClick}
 				>
 					{drug.name}
+
+					{selected}
 				</ListItem>
 			);
 		});
