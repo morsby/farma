@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../actions';
-
 import Sidebar from 'grommet/components/Sidebar';
 import Header from 'grommet/components/Header';
-import Menu from './Menu.js';
+import CloseIcon from 'grommet/components/icons/base/Close';
+
+import Menu from './Menu';
+
+import * as actions from '../../actions';
+
 /*
 import Animate from 'grommet/components/Animate';
 <Animate
@@ -37,7 +40,7 @@ class Navigation extends Component {
 					float={false}
 					style={{ position: 'fixed', top: 0 }}
 				>
-					X
+					<CloseIcon size="small" />
 				</Header>
 				<Menu drugs={this.props.drugs} />
 			</Sidebar>
