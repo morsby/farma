@@ -10,7 +10,7 @@ mongoose.connect(keys.mongoURI, {
 });
 
 const app = express();
-router.get('/', function(req, res, next) {
+app.get('/', function(req, res, next) {
 	res.status(200).send('Hi, It works!');
 });
 // use the authRoutes
