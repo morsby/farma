@@ -10,6 +10,8 @@ mongoose.connect(keys.mongoURI, {
 });
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.get('/', function(req, res, next) {
 	res.status(200).send('Hi, It works!');
 });
