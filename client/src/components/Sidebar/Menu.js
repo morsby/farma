@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-
 import * as actions from '../../actions';
 
 import Menu from 'grommet/components/Menu';
@@ -28,7 +27,7 @@ class DrugList extends Component {
 				: { ...style };
 
 			let onClick;
-			if (drug.preview) {
+			if (drug.content) {
 				onClick = () => this.onClick(drug._id);
 			}
 			return (

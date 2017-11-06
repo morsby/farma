@@ -1,0 +1,15 @@
+body,
+html,
+#root {
+	height: 100%;
+	width: 100%;
+}
+
+.grommet .drug-content {
+	max-width: 100%;
+}
+
+.grommet .drug-content p,
+.grommet .drug-content ul {
+	max-width: 100%;
+}

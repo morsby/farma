@@ -4,8 +4,11 @@ import * as actions from '../actions';
 
 import GrommetApp from 'grommet/components/App';
 import Split from 'grommet/components/Split';
+import Box from 'grommet/components/Box';
+import Spinner from 'react-spinkit';
 
 import 'grommet/grommet.min.css';
+import '../style.css';
 
 import Sidebar from './Sidebar';
 import Main from './Main';
@@ -15,6 +18,7 @@ class App extends Component {
 		super(props);
 
 		this.onResponsive = this.onResponsive.bind(this);
+		this.displayApp = this.displayApp.bind(this);
 	}
 
 	componentDidMount() {
@@ -25,22 +29,23 @@ class App extends Component {
 		this.props.navResponsive(responsive);
 	}
 
-	render() {
-		/*	let nav = '';
-		if (
-			this.props.nav.visible ||
-			this.props.nav.responsive === 'multiple'
-		) {
-			nav = <Sidebar />;
-		} */
+	displayApp() {
+		if (Object.keys(this.props.drugs).length === 0) {
+			return (
+				<Box align="center" full="vertical" justify="center">
+					<Spinner name="ball-pulse-sync" fadeIn="none" />
+				</Box>
+			);
+		} else {
+			let priority = 'right';
+			if (
+				this.props.nav.visible &&
+				this.props.nav.responsive === 'single'
+			) {
+				priority = 'left';
+			}
 
-		let priority = 'right';
-		if (this.props.nav.visible && this.props.nav.responsive === 'single') {
-			priority = 'left';
-		}
-
-		return (
-			<GrommetApp centered={false}>
+			return (
 				<Split
 					flex="right"
 					priority={priority}
@@ -49,13 +54,17 @@ class App extends Component {
 					<Sidebar />
 					<Main />
 				</Split>
-			</GrommetApp>
-		);
+			);
+		}
+	}
+
+	render() {
+		return <GrommetApp centered={false}>{this.displayApp()}</GrommetApp>;
 	}
 }
 
-function mapStateToProps({ nav }) {
-	return { nav };
+function mapStateToProps({ nav, drugs }) {
+	return { nav, drugs };
 }
 
 export default connect(mapStateToProps, actions)(App);

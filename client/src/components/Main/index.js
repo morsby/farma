@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import marked from 'marked';
 
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Box from 'grommet/components/Box';
+import Paragraph from 'grommet/components/Paragraph';
 
 import * as actions from '../../actions';
 
@@ -21,8 +23,20 @@ class Main extends Component {
 	}
 
 	renderDrug(drug) {
+		let createMarkup = md => {
+			return { __html: marked(md) };
+		};
+
 		if (drug.visible) {
-			return <div key={drug._id}>{drug.name}</div>;
+			return (
+				<Box pad="medium" margin="small" key={drug._id}>
+					<h2>{drug.name}</h2>
+					<div
+						dangerouslySetInnerHTML={createMarkup(drug.content)}
+						className="drug-content"
+					/>
+				</Box>
+			);
 		} else {
 			return null;
 		}
@@ -34,12 +48,7 @@ class Main extends Component {
 				<Header onClick={this.onClick}>
 					<Title responsive={false}>Farma.morsby.dk</Title>
 				</Header>
-				<Box
-					colorIndex="neutral-2"
-					justify="center"
-					align="center"
-					pad="medium"
-				>
+				<Box pad="medium">
 					{_.map(this.props.drugs, drug => this.renderDrug(drug))}
 				</Box>
 			</div>

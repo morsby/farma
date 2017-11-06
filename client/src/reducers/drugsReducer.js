@@ -10,8 +10,8 @@ export default function(state = {}, action) {
 
 			return _.mapKeys(drugs, '_id');
 		case actions.TOGGLE_DRUG:
-			// If content (through preview) contains anything but whitespace
-			if (/\S/.test(state[action.drugId].preview)) {
+			// If content contains anything but whitespace
+			if (/\S/.test(state[action.drugId].content)) {
 				const val = state[action.drugId].visible;
 				const newState = _.set(
 					{ ...state },
