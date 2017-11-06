@@ -10,8 +10,15 @@ export const fetchDrugs = () => async dispatch => {
 	});
 };
 
+export const toggleDrug = drugId => {
+	return {
+		type: actions.TOGGLE_DRUG,
+		drugId: drugId
+	};
+};
+
 export const navVisible = visible => {
-	return { type: actions.NAV_VISIBLE, active: visible };
+	return { type: actions.NAV_VISIBLE, visible: visible };
 };
 
 export const navResponsive = responsive => {

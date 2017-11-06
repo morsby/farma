@@ -32,6 +32,7 @@ class Navigation extends Component {
 	}
 
 	render() {
+		console.log(this.props.drugs);
 		return (
 			<Sidebar>
 				<Header

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
@@ -12,10 +13,19 @@ class Main extends Component {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
+		this.renderDrug = this.renderDrug.bind(this);
 	}
 
 	onClick() {
 		this.props.navVisible(this.props.nav.visible);
+	}
+
+	renderDrug(drug) {
+		if (drug.visible) {
+			return <div key={drug._id}>{drug.name}</div>;
+		} else {
+			return null;
+		}
 	}
 
 	render() {
@@ -30,7 +40,7 @@ class Main extends Component {
 					align="center"
 					pad="medium"
 				>
-					Right Side
+					{_.map(this.props.drugs, drug => this.renderDrug(drug))}
 				</Box>
 			</div>
 		);

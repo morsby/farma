@@ -5,7 +5,6 @@ const drugSchema = new Schema({
 	name: String,
 	important: Boolean,
 	chapters: Array,
-	hasInfo: Boolean,
 	preview: String,
 	content: String
 });
