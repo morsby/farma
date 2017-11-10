@@ -28,6 +28,7 @@ class DisplayOpenDrugs extends Component {
 			}
 		});
 	}
+
 	render() {
 		return (
 			<Box size="small">

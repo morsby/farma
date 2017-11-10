@@ -6,8 +6,9 @@ import { scrollToWhen } from 'react-redux-scroll';
 import marked from 'marked';
 
 import Box from 'grommet/components/Box';
-import CaretDownIcon from 'grommet/components/icons/base/CaretDown';
-import CaretUpIcon from 'grommet/components/icons/base/CaretUp';
+import Paragraph from 'grommet/components/Paragraph';
+import DownIcon from 'grommet/components/icons/base/Down';
+import UpIcon from 'grommet/components/icons/base/Up';
 import CloseIcon from 'grommet/components/icons/base/Close';
 
 import * as actions from '../../actions';
@@ -20,6 +21,7 @@ class DisplayDrug extends Component {
 		super();
 
 		this.state = { expanded: true };
+		this.renderChapters = this.renderChapters.bind(this);
 		this.isDrugClicked = this.isDrugClicked.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onCloseClick = this.onCloseClick.bind(this);
@@ -39,6 +41,17 @@ class DisplayDrug extends Component {
 		return { __html: marked(md) };
 	}
 
+	renderChapters() {
+		let numberOfChaps = this.props.drug.chapters.length;
+		return this.props.drug.chapters.map((chap, i) => {
+			if (numberOfChaps === i + 1) {
+				return `${chap}`;
+			} else {
+				return `${chap}, `;
+			}
+		});
+	}
+
 	onToggleClick() {
 		this.setState({ expanded: !this.state.expanded });
 	}
@@ -48,7 +61,7 @@ class DisplayDrug extends Component {
 	}
 
 	componentDidMount() {
-		//	this.el.scrollIntoView({ behaviour: 'smooth' });
+		this.props.scrollToDrug(this.props.drug._id);
 	}
 
 	render() {
@@ -69,10 +82,19 @@ class DisplayDrug extends Component {
 			);
 		}
 
-		let icon = this.state.expanded ? <CaretUpIcon /> : <CaretDownIcon />;
+		let icon = this.state.expanded ? (
+			<UpIcon onClick={this.onToggleClick} />
+		) : (
+			<DownIcon onClick={this.onToggleClick} />
+		);
 
 		return (
-			<Box pad="medium" margin="small" style={{ display: 'block' }}>
+			<Box
+				pad="medium"
+				margin="small"
+				colorIndex="brand"
+				style={{ display: 'block' }}
+			>
 				<this.ScrollableHeader
 					style={style}
 					ref={el => {
@@ -82,9 +104,14 @@ class DisplayDrug extends Component {
 				>
 					{drug.name}
 				</this.ScrollableHeader>
+				<Paragraph size="small">
+					Kapitel: {this.renderChapters()}
+				</Paragraph>
 				{content}
 				<div>
-					<span onClick={this.onToggleClick}>{icon}</span>
+					<span style={{ width: '25%', display: 'inline-block' }}>
+						{icon}
+					</span>
 					<CloseIcon onClick={this.onCloseClick} />
 				</div>
 			</Box>

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Split from 'grommet/components/Split';
-import Header from 'grommet/components/Header';
-import Title from 'grommet/components/Title';
-import Box from 'grommet/components/Box';
-import Paragraph from 'grommet/components/Paragraph';
 
 import DrugContainer from './DrugContainer';
 
@@ -27,8 +23,8 @@ class Main extends Component {
 
 	render() {
 		return (
-			<Split flex="left">
-				<DrugContainer drugs={this.props.drugs} />
+			<Split flex="left" priority="left">
+				<DrugContainer drugs={this.props.drugs} nav={this.props.nav} />
 
 				<DisplayOpenDrugs drugs={this.props.drugs} />
 			</Split>

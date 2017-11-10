@@ -33,7 +33,7 @@ class Navigation extends Component {
 
 	render() {
 		return (
-			<Sidebar>
+			<Sidebar colorIndex="light-2" size="small">
 				<Header
 					onClick={this.onClick}
 					fixed={true}
