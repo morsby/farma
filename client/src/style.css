@@ -13,6 +13,7 @@ body,
 }
 
 .grommet .drug-content p,
-.grommet .drug-content ul {
+.grommet .drug-content ul,
+.grommet .drug-content ul li {
 	max-width: 100%;
 }

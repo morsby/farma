@@ -17,6 +17,13 @@ export const toggleDrug = drugId => {
 	};
 };
 
+export const scrollToDrug = drugId => {
+	return {
+		type: actions.SCROLL_TO_DRUG,
+		drugId: drugId
+	};
+};
+
 export const navVisible = visible => {
 	return { type: actions.NAV_VISIBLE, visible: visible };
 };

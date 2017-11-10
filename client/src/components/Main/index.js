@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
+import Split from 'grommet/components/Split';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Box from 'grommet/components/Box';
 import Paragraph from 'grommet/components/Paragraph';
 
-import DisplayDrug from './DisplayDrug';
+import DrugContainer from './DrugContainer';
+
+import DisplayOpenDrugs from './DisplayOpenDrugs';
 
 import * as actions from '../../actions';
 
@@ -16,31 +18,20 @@ class Main extends Component {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
-		this.renderDrug = this.renderDrug.bind(this);
+		//this.renderDrug = this.renderDrug.bind(this);
 	}
 
 	onClick() {
 		this.props.navVisible(this.props.nav.visible);
 	}
 
-	renderDrug(drug) {
-		if (drug.visible) {
-			return <DisplayDrug drug={drug} key={drug._id} />;
-		} else {
-			return null;
-		}
-	}
-
 	render() {
 		return (
-			<div>
-				<Header onClick={this.onClick}>
-					<Title responsive={false}>Farma.morsby.dk</Title>
-				</Header>
-				<Box pad="medium">
-					{_.map(this.props.drugs, drug => this.renderDrug(drug))}
-				</Box>
-			</div>
+			<Split flex="left">
+				<DrugContainer drugs={this.props.drugs} />
+
+				<DisplayOpenDrugs drugs={this.props.drugs} />
+			</Split>
 		);
 	}
 }
