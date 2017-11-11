@@ -5,12 +5,14 @@ import _ from 'lodash';
 import * as actions from '../../actions';
 
 import Box from 'grommet/components/Box';
-//TODO: React-redux-scroll
+import Select from 'grommet/components/Select';
+
 class DisplayOpenDrugs extends Component {
 	constructor() {
 		super();
 		this.onClick = this.onClick.bind(this);
 		this.renderOpen = this.renderOpen.bind(this);
+		this.state = { openDrugs: [] };
 	}
 
 	onClick(id) {
@@ -18,25 +20,61 @@ class DisplayOpenDrugs extends Component {
 	}
 
 	renderOpen() {
-		return _.map(this.props.drugs, drug => {
+		let renderList = [];
+		let selectOptions = [];
+
+		_.map(this.props.drugs, drug => {
 			if (drug.visible) {
-				return (
+				renderList.push(
 					<a onClick={() => this.onClick(drug._id)} key={drug._id}>
 						{drug.name}
 					</a>
 				);
+				selectOptions.push({ label: drug.name, value: drug._id });
+			} else {
+				return null;
 			}
 		});
+
+		return {
+			renderList,
+			selectOptions
+		};
 	}
 
 	render() {
-		return (
-			<Box size="small">
-				<h6>Åbne stoffer</h6>
-				{this.renderOpen()}
-			</Box>
-		);
+		if (this.props.nav.responsive === 'multiple') {
+			return (
+				<Box size="small">
+					<h6>Åbne stoffer</h6>
+					{this.renderOpen().renderList}
+				</Box>
+			);
+		} else {
+			return (
+				<div
+					style={{
+						position: 'fixed',
+						top: '5px',
+						right: '15px',
+						background: '#fff'
+					}}
+				>
+					<Select
+						placeHolder="Åbne stoffer"
+						options={this.renderOpen().selectOptions}
+						onChange={selected => {
+							this.onClick(selected.option.value);
+						}}
+					/>
+				</div>
+			);
+		}
 	}
 }
 
-export default connect(null, actions)(DisplayOpenDrugs);
+function mapStateToProps({ nav }) {
+	return { nav };
+}
+
+export default connect(mapStateToProps, actions)(DisplayOpenDrugs);

@@ -3,7 +3,7 @@ import * as actions from '../actions/types';
 let initialState = {
 	responsive: 'single',
 	visible: true,
-	lastOpenedDrug: null
+	navLastOpenedDrug: null
 };
 
 export default function(state = initialState, action) {

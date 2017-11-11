@@ -22,16 +22,16 @@ class DisplayDrug extends Component {
 
 		this.state = { expanded: true };
 		this.renderChapters = this.renderChapters.bind(this);
-		this.scrollToDrug = this.scrollToDrug.bind(this);
+		this.isDrugClicked = this.isDrugClicked.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onCloseClick = this.onCloseClick.bind(this);
 
-		this.ScrollableHeader = scrollToWhen(this.scrollToDrug, null, null, [
+		this.ScrollableHeader = scrollToWhen(this.isDrugClicked, null, null, [
 			'id'
 		])('h1');
 	}
 
-	scrollToDrug = (action, props) => {
+	isDrugClicked = (action, props) => {
 		const res =
 			(action.type === actionTypes.SCROLL_TO_DRUG &&
 				props.id === action.drugId) ||

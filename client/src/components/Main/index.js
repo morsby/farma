@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Split from 'grommet/components/Split';
+import Box from 'grommet/components/Box';
 
 import DrugContainer from './DrugContainer';
+import DrugContainerScrollable from './DrugContainerScrollable';
 
 import DisplayOpenDrugs from './DisplayOpenDrugs';
 
@@ -14,7 +16,6 @@ class Main extends Component {
 		super(props);
 
 		this.onClick = this.onClick.bind(this);
-		//this.renderDrug = this.renderDrug.bind(this);
 	}
 
 	onClick() {
@@ -22,11 +23,18 @@ class Main extends Component {
 	}
 
 	render() {
+		let openDrugs = '';
+		let displayDrugContainer = <DrugContainer />;
+		if (this.props.nav.responsive === 'multiple') {
+			openDrugs = <DisplayOpenDrugs drugs={this.props.drugs} />;
+			displayDrugContainer = <DrugContainerScrollable />;
+		}
+
 		return (
 			<Split flex="left" priority="left">
-				<DrugContainer drugs={this.props.drugs} nav={this.props.nav} />
+				{displayDrugContainer}
 
-				<DisplayOpenDrugs drugs={this.props.drugs} />
+				{openDrugs}
 			</Split>
 		);
 	}
