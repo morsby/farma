@@ -18,6 +18,7 @@ class DrugList extends Component {
 	onClick(id) {
 		// toggleDrug
 		this.props.toggleDrug(id);
+		this.props.navLastOpenedDrug(id);
 	}
 
 	generateListItems() {

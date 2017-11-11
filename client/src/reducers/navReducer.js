@@ -2,7 +2,8 @@ import * as actions from '../actions/types';
 
 let initialState = {
 	responsive: 'single',
-	visible: true
+	visible: true,
+	lastOpenedDrug: null
 };
 
 export default function(state = initialState, action) {
@@ -14,6 +15,8 @@ export default function(state = initialState, action) {
 				return state;
 			}
 			return { ...state, visible: !state.visible };
+		case actions.NAV_LAST_OPENED_DRUG:
+			return { ...state, navLastOpenedDrug: action.drugId };
 		default:
 			return state;
 	}

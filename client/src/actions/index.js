@@ -31,3 +31,10 @@ export const navVisible = visible => {
 export const navResponsive = responsive => {
 	return { type: actions.NAV_RESPONSIVE, responsive: responsive };
 };
+
+export const navLastOpenedDrug = drugId => {
+	return {
+		type: actions.NAV_LAST_OPENED_DRUG,
+		drugId: drugId
+	};
+};

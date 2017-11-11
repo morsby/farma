@@ -22,21 +22,25 @@ class DisplayDrug extends Component {
 
 		this.state = { expanded: true };
 		this.renderChapters = this.renderChapters.bind(this);
-		this.isDrugClicked = this.isDrugClicked.bind(this);
+		this.scrollToDrug = this.scrollToDrug.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onCloseClick = this.onCloseClick.bind(this);
 
-		this.ScrollableHeader = scrollToWhen(this.isDrugClicked, null, null, [
+		this.ScrollableHeader = scrollToWhen(this.scrollToDrug, null, null, [
 			'id'
 		])('h1');
 	}
-	isDrugClicked = (action, props) => {
-		const res =
-			action.type === actionTypes.SCROLL_TO_DRUG &&
-			props.id === action.drugId;
 
+	scrollToDrug = (action, props) => {
+		const res =
+			(action.type === actionTypes.SCROLL_TO_DRUG &&
+				props.id === action.drugId) ||
+			(action.type === actionTypes.NAV_VISIBLE &&
+				action.visible === true &&
+				this.props.nav.navLastOpenedDrug === props.id);
 		return res;
 	};
+
 	createMarkup(md) {
 		return { __html: marked(md) };
 	}
@@ -119,4 +123,8 @@ class DisplayDrug extends Component {
 	}
 }
 
-export default connect(null, actions)(DisplayDrug);
+function mapStateToProps({ nav }) {
+	return { nav };
+}
+
+export default connect(mapStateToProps, actions)(DisplayDrug);
