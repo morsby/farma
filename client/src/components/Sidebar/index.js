@@ -33,7 +33,9 @@ class Navigation extends Component {
 	render() {
 		let mobileHeader = <Title truncate={false}>Stofliste</Title>;
 		let onClick = null;
+		let flex = null;
 		if (this.props.nav.responsive === 'single') {
+			flex = true;
 			onClick = this.onClick;
 			mobileHeader = (
 				<Box>
@@ -61,10 +63,17 @@ class Navigation extends Component {
 				>
 					{mobileHeader}
 					<Box
-						flex={false}
+						align="center"
+						size="small"
+						flex={flex}
 						justify="end"
 						direction="row"
 						responsive={false}
+						margin={{
+							left: 'small',
+							right: 'medium',
+							vertical: 'small'
+						}}
 					>
 						<Search
 							placeHolder="Søg"

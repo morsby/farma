@@ -38,7 +38,7 @@ const DrugContainer = props => {
 						<MenuIcon /> Stofliste
 					</Title>
 				</Box>
-				<Box justify="end" direction="row">
+				<Box justify="end" direction="row" margin="small">
 					{openDrugs}
 				</Box>
 			</Header>

@@ -30,7 +30,11 @@ class DrugList extends Component {
 			style = drug.hasInfo
 				? { ...style }
 				: { ...style, color: 'rgb(122, 122, 122)' };
-			if (!drug.name.includes(this.props.searchVal)) {
+			if (
+				!drug.name
+					.toLowerCase()
+					.includes(this.props.searchVal.toLowerCase())
+			) {
 				style = { ...style, display: 'none' };
 			}
 
