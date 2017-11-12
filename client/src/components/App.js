@@ -63,8 +63,8 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps({ nav, drugs }) {
-	return { nav, drugs };
+function mapStateToProps({ drugs, nav }) {
+	return { drugs: drugs.drugs, chapters: drugs.chapters, nav };
 }
 
 export default connect(mapStateToProps, actions)(App);

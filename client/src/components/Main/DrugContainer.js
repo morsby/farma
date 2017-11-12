@@ -62,7 +62,7 @@ const DrugContainer = props => {
 };
 
 function mapStateToProps({ drugs, nav }) {
-	return { drugs, nav };
+	return { drugs: drugs.drugs, chapters: drugs.chapters, nav };
 }
 
 export default connect(mapStateToProps, actions)(DrugContainer);

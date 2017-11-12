@@ -6,7 +6,8 @@ import Sidebar from 'grommet/components/Sidebar';
 import Box from 'grommet/components/Box';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
-import Search from 'grommet/components/Search';
+import CheckBox from 'grommet/components/CheckBox';
+
 import Button from 'grommet/components/Button';
 import CloseIcon from 'grommet/components/icons/base/Close';
 import ClearIcon from 'grommet/components/icons/base/Clear';
@@ -44,6 +45,7 @@ class Navigation extends Component {
 	}
 
 	onClear() {
+		this.setSearchTerm.cancel();
 		this.setState({ searchVal: '', searchTerm: '' });
 	}
 
@@ -84,25 +86,29 @@ class Navigation extends Component {
 					{mobileHeader}
 					<Box
 						align="center"
-						size="small"
 						flex={flex}
 						justify="end"
 						direction="row"
 						responsive={false}
-						margin={{
-							left: 'small',
-							right: 'medium',
-							vertical: 'small'
-						}}
+						full="horizontal"
 					>
-						<Search
-							placeHolder="Søg"
-							inline={true}
-							responsive={false}
+						<input
+							placeholder="Filtrer"
+							type="text"
 							value={this.state.searchVal}
-							onDOMChange={this.onSearch}
+							onChange={this.onSearch}
+							style={{ width: '90%' }}
+							autoComplete="off"
+							autoCorrect="off"
+							autoCapitalize="off"
+							spellCheck="false"
 						/>
 						<Button icon={<ClearIcon />} onClick={this.onClear} />
+					</Box>
+					<Box>
+						<CheckBox label="1" />
+						<CheckBox label="2" />
+						<CheckBox label="3" />
 					</Box>
 				</Header>
 				<Menu
@@ -115,7 +121,7 @@ class Navigation extends Component {
 }
 
 function mapStateToProps({ drugs, nav }) {
-	return { drugs, nav };
+	return { drugs: drugs.drugs, chapters: drugs.chapters, nav };
 }
 
 export default connect(mapStateToProps, actions)(Navigation);
