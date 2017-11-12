@@ -35,3 +35,17 @@ body,
 .grommetux-header__wrapper {
 	height: 0px;
 }
+
+.grommetux-form-fields {
+	justify-content: center;
+	align-items: flex-start;
+	display: flex;
+	flex-flow: row wrap;
+}
+.grommetux-check-box {
+	width: 75px;
+}
+
+.grommetux-check-box:last-child {
+	width: 160px;
+}

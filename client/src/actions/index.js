@@ -18,6 +18,13 @@ export const toggleDrug = drugId => {
 	};
 };
 
+export const toggleChapter = chapter => {
+	return {
+		type: actions.TOGGLE_CHAPTER,
+		chapter
+	};
+};
+
 export const scrollToDrug = drugId => {
 	return {
 		type: actions.SCROLL_TO_DRUG,

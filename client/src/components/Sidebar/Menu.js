@@ -23,6 +23,13 @@ class DrugList extends Component {
 
 	generateListItems() {
 		return _.map(this.props.drugs, drug => {
+			// If-statement her kan slettes. Tjekkes igen senere, obs. performance
+			if (
+				!drug.name
+					.toLowerCase()
+					.includes(this.props.searchVal.toLowerCase())
+			)
+				return null;
 			let style = { whiteSpace: 'pre-line' };
 			style = drug.important
 				? { ...style, fontWeight: 'bold' }

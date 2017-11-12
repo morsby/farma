@@ -7,7 +7,11 @@ export default function(state = { drugs: {}, chapters: {} }, action) {
 			let chaptersArr = [];
 
 			let drugs = action.payload.map(drug => {
-				chaptersArr.push(drug.chapters);
+				if (drug.chapters[0] === null) {
+					chaptersArr.push('Intet kapitel');
+				} else {
+					chaptersArr.push(drug.chapters);
+				}
 				let hasInfo;
 				if (/\S/.test(drug.content)) {
 					hasInfo = true;
@@ -25,7 +29,7 @@ export default function(state = { drugs: {}, chapters: {} }, action) {
 				}
 				_.set(chapters, [x, 'chapter'], x);
 				_.set(chapters, [x, 'count'], (chapters[x].count || 0) + 1);
-				_.set(chapters, [x, 'visible'], 1);
+				_.set(chapters, [x, 'visible'], true);
 			});
 
 			return { drugs: _.mapKeys(drugs, '_id'), chapters };
@@ -42,6 +46,16 @@ export default function(state = { drugs: {}, chapters: {} }, action) {
 			} else {
 				return state;
 			}
+		case actions.TOGGLE_CHAPTER:
+			const val = state.chapters[action.chapter].visible;
+
+			const newState = _.set(
+				{ ...state.chapters },
+				[action.chapter, 'visible'],
+				!val
+			);
+			return { ...state, chapters: newState };
+
 		default:
 			return state;
 	}

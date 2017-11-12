@@ -6,6 +6,10 @@ import Sidebar from 'grommet/components/Sidebar';
 import Box from 'grommet/components/Box';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
+import Accordion from 'grommet/components/Accordion';
+import AccordionPanel from 'grommet/components/AccordionPanel';
+import Form from 'grommet/components/Form';
+import FormFields from 'grommet/components/FormFields';
 import CheckBox from 'grommet/components/CheckBox';
 
 import Button from 'grommet/components/Button';
@@ -21,16 +25,26 @@ class Navigation extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { searchVal: '', searchTerm: '' };
-		this.onClick = this.onClick.bind(this);
+		this.state = {
+			searchVal: '',
+			searchTerm: '',
+			filterVisible: false,
+			selectedChapters: []
+		};
+		this.onDrugClick = this.onDrugClick.bind(this);
+		this.onChapterFilterClick = this.onChapterFilterClick.bind(this);
 		this.onSearch = this.onSearch.bind(this);
 		this.setSearchTerm = _.debounce(this.setSearchTerm.bind(this), 150);
 		this.onClear = this.onClear.bind(this);
 	}
 
-	onClick() {
+	onDrugClick() {
 		if (this.props.nav.responsive === 'single')
 			this.props.navVisible(this.props.nav.visible);
+	}
+
+	onChapterFilterClick() {
+		this.setState({ filterVisible: !this.state.filterVisible });
 	}
 
 	onSearch(event) {
@@ -49,13 +63,27 @@ class Navigation extends Component {
 		this.setState({ searchVal: '', searchTerm: '' });
 	}
 
+	renderChapters() {
+		return _.map(this.props.chapters, chapter => {
+			return (
+				<CheckBox
+					label={chapter.chapter}
+					key={chapter.chapter}
+					checked={chapter.visible}
+					toggle={true}
+				/>
+			);
+		});
+	}
+
 	render() {
-		let onClick = this.onClick;
+		let onDrugClick = this.onDrugClick;
 		let flex = true;
 		let mobileHeader = (
 			<Box>
 				<Title responsive={false} truncate={false}>
-					<Button icon={<CloseIcon />} onClick={onClick} /> Stofliste
+					<Button icon={<CloseIcon />} onClick={onDrugClick} />{' '}
+					Stofliste
 				</Title>
 			</Box>
 		);
@@ -63,9 +91,19 @@ class Navigation extends Component {
 
 		if (this.props.nav.responsive === 'multiple') {
 			flex = null;
-			onClick = null;
+			onDrugClick = null;
 			mobileHeader = <Title truncate={false}>Stofliste</Title>;
 			padding = '100px';
+		}
+
+		let chapterFilter = '';
+
+		if (this.state.filterVisible === true) {
+			chapterFilter = (
+				<Form>
+					<FormFields>{this.renderChapters()}</FormFields>
+				</Form>
+			);
 		}
 		return (
 			<Sidebar
@@ -105,10 +143,11 @@ class Navigation extends Component {
 						/>
 						<Button icon={<ClearIcon />} onClick={this.onClear} />
 					</Box>
-					<Box>
-						<CheckBox label="1" />
-						<CheckBox label="2" />
-						<CheckBox label="3" />
+					<Box size="small">
+						<h6 onClick={this.onChapterFilterClick}>
+							Filtrer efter kapitel
+						</h6>
+						{chapterFilter}
 					</Box>
 				</Header>
 				<Menu
