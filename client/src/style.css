@@ -14,7 +14,9 @@ body,
 
 .grommet .drug-content p,
 .grommet .drug-content ul,
-.grommet .drug-content ul li {
+.grommet .drug-content ol,
+.grommet .drug-content ul li,
+.grommet .drug-content ol li {
 	max-width: 100%;
 	color: #fff;
 }

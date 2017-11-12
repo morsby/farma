@@ -30,6 +30,9 @@ class DrugList extends Component {
 			style = drug.hasInfo
 				? { ...style }
 				: { ...style, color: 'rgb(122, 122, 122)' };
+			if (!drug.name.includes(this.props.searchVal)) {
+				style = { ...style, display: 'none' };
+			}
 
 			let onClick;
 			if (drug.hasInfo) {
@@ -51,32 +54,27 @@ class DrugList extends Component {
 				);
 			}
 
-			if (
-				drug.name.includes(this.props.searchVal) ||
-				!this.props.searchVal
-			) {
-				return (
-					<ListItem
-						justify="between"
-						key={drug.name}
-						style={style}
-						onClick={onClick}
-					>
-						{drug.name}
+			return (
+				<ListItem
+					justify="between"
+					key={drug.name}
+					style={style}
+					onClick={onClick}
+				>
+					{drug.name}
 
-						{selected}
-					</ListItem>
-				);
-			} else {
-				return null;
-			}
+					{selected}
+				</ListItem>
+			);
 		});
 	}
 
 	render() {
 		return (
 			<Menu responsive={false}>
-				<List>{this.generateListItems()}</List>
+				<List style={{ overflow: 'hidden' }}>
+					{this.generateListItems()}
+				</List>
 			</Menu>
 		);
 	}

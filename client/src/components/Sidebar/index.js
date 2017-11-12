@@ -51,7 +51,11 @@ class Navigation extends Component {
 			<Sidebar colorIndex="light-2" size="small">
 				<Header
 					fixed={true}
-					style={{ position: 'fixed', top: 0 }}
+					style={{
+						position: 'fixed',
+						top: 0,
+						backgroundColor: '#fff'
+					}}
 					direction="row"
 					wrap={true}
 				>
