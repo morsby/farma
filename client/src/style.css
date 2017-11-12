@@ -30,3 +30,8 @@ body,
 	z-index: 999 !important;
 	background-color: #fff !important;
 }
+
+.grommetux-header__container,
+.grommetux-header__wrapper {
+	height: 0px;
+}

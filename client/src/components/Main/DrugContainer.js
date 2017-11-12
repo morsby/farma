@@ -28,11 +28,12 @@ const DrugContainer = props => {
 	let openDrugs = '';
 	let style = { overflowY: 'scroll' };
 	let mobileHeader = '';
+	let marginTop = '0px';
 	if (props.nav.responsive === 'single') {
 		openDrugs = <DisplayOpenDrugs drugs={props.drugs} />;
 		style = {};
 		mobileHeader = (
-			<Header fixed={true} style={{ position: 'fixed', top: 0 }}>
+			<Header style={{ position: 'fixed', top: 0 }} fixed={true}>
 				<Box flex={true}>
 					<Title responsive={false} onClick={() => onClick(props)}>
 						<MenuIcon /> Stofliste
@@ -43,12 +44,15 @@ const DrugContainer = props => {
 				</Box>
 			</Header>
 		);
+		marginTop = '72px';
 	}
 
 	return (
 		<Box full="vertical" style={style}>
 			{mobileHeader}
-			<Box>{_.map(props.drugs, drug => renderDrug(drug))}</Box>
+			<Box style={{ marginTop }}>
+				{_.map(props.drugs, drug => renderDrug(drug))}
+			</Box>
 		</Box>
 	);
 };

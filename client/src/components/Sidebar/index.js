@@ -7,6 +7,7 @@ import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Search from 'grommet/components/Search';
 import CloseIcon from 'grommet/components/icons/base/Close';
+import ClearIcon from 'grommet/components/icons/base/Clear';
 
 import Menu from './Menu';
 
@@ -19,6 +20,7 @@ class Navigation extends Component {
 		this.state = { searchVal: '' };
 		this.onClick = this.onClick.bind(this);
 		this.onSearch = this.onSearch.bind(this);
+		this.onClear = this.onClear.bind(this);
 	}
 
 	onClick() {
@@ -30,36 +32,43 @@ class Navigation extends Component {
 		this.setState({ searchVal: event.target.value });
 	}
 
+	onClear() {
+		this.setState({ searchVal: '' });
+	}
+
 	render() {
-		let mobileHeader = <Title truncate={false}>Stofliste</Title>;
-		let onClick = null;
-		let flex = null;
-		if (this.props.nav.responsive === 'single') {
-			flex = true;
-			onClick = this.onClick;
-			mobileHeader = (
-				<Box>
-					<Title
-						responsive={false}
-						onClick={onClick}
-						truncate={false}
-					>
-						<CloseIcon /> Stofliste
-					</Title>
-				</Box>
-			);
+		let onClick = this.onClick;
+		let flex = true;
+		let mobileHeader = (
+			<Box>
+				<Title responsive={false} onClick={onClick} truncate={false}>
+					<CloseIcon /> Stofliste
+				</Title>
+			</Box>
+		);
+		let padding = '72px';
+
+		if (this.props.nav.responsive === 'multiple') {
+			flex = null;
+			onClick = null;
+			mobileHeader = <Title truncate={false}>Stofliste</Title>;
+			padding = '100px';
 		}
 		return (
-			<Sidebar colorIndex="light-2" size="small">
+			<Sidebar
+				colorIndex="light-2"
+				size="small"
+				style={{ paddingTop: padding }}
+			>
 				<Header
-					fixed={true}
 					style={{
 						position: 'fixed',
 						top: 0,
-						backgroundColor: '#fff'
+						background: '#fff !important'
 					}}
 					direction="row"
 					wrap={true}
+					fixed={true}
 				>
 					{mobileHeader}
 					<Box
@@ -82,6 +91,7 @@ class Navigation extends Component {
 							value={this.state.searchVal}
 							onDOMChange={this.onSearch}
 						/>
+						<ClearIcon onClick={this.onClear} />
 					</Box>
 				</Header>
 				<Menu
