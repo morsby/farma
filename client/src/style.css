@@ -17,3 +17,8 @@ body,
 .grommet .drug-content ul li {
 	max-width: 100%;
 }
+
+.grommetux-drop {
+	z-index: 999 !important;
+	background-color: #fff !important;
+}

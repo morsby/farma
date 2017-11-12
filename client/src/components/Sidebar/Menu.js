@@ -51,18 +51,25 @@ class DrugList extends Component {
 				);
 			}
 
-			return (
-				<ListItem
-					justify="between"
-					key={drug.name}
-					style={style}
-					onClick={onClick}
-				>
-					{drug.name}
+			if (
+				drug.name.includes(this.props.searchVal) ||
+				!this.props.searchVal
+			) {
+				return (
+					<ListItem
+						justify="between"
+						key={drug.name}
+						style={style}
+						onClick={onClick}
+					>
+						{drug.name}
 
-					{selected}
-				</ListItem>
-			);
+						{selected}
+					</ListItem>
+				);
+			} else {
+				return null;
+			}
 		});
 	}
 

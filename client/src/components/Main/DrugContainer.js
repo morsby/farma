@@ -1,13 +1,12 @@
-//TODO: Fiks scrolling, så det virker på smal skærm. Evt. noget med ikke at returnere scrollableArea?
-
 import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
-import { scrollableArea } from 'react-redux-scroll';
 import Box from 'grommet/components/Box';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
+import MenuIcon from 'grommet/components/icons/base/Menu';
+
 import DisplayDrug from './DisplayDrug';
 import DisplayOpenDrugs from './DisplayOpenDrugs';
 
@@ -28,22 +27,28 @@ const onClick = props => {
 const DrugContainer = props => {
 	let openDrugs = '';
 	let style = { overflowY: 'scroll' };
+	let mobileHeader = '';
 	if (props.nav.responsive === 'single') {
 		openDrugs = <DisplayOpenDrugs drugs={props.drugs} />;
 		style = {};
+		mobileHeader = (
+			<Header fixed={true} style={{ position: 'fixed', top: 0 }}>
+				<Box flex={true}>
+					<Title responsive={false} onClick={() => onClick(props)}>
+						<MenuIcon /> Stofliste
+					</Title>
+				</Box>
+				<Box justify="end" direction="row">
+					{openDrugs}
+				</Box>
+			</Header>
+		);
 	}
 
 	return (
 		<Box full="vertical" style={style}>
-			<div>
-				<Header>
-					<Title responsive={false} onClick={() => onClick(props)}>
-						Farma.morsby.dk
-					</Title>
-					{openDrugs}
-				</Header>
-				<Box>{_.map(props.drugs, drug => renderDrug(drug))}</Box>
-			</div>
+			{mobileHeader}
+			<Box>{_.map(props.drugs, drug => renderDrug(drug))}</Box>
 		</Box>
 	);
 };

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Split from 'grommet/components/Split';
-import Box from 'grommet/components/Box';
 
 import DrugContainer from './DrugContainer';
 import DrugContainerScrollable from './DrugContainerScrollable';

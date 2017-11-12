@@ -26,18 +26,19 @@ class DisplayDrug extends Component {
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onCloseClick = this.onCloseClick.bind(this);
 
-		this.ScrollableHeader = scrollToWhen(this.isDrugClicked, null, null, [
-			'id'
-		])('h1');
+		this.ScrollableHeader = scrollToWhen(
+			this.isDrugClicked,
+			null,
+			{ yMargin: 85 },
+			['id']
+		)('h1');
 	}
 
 	isDrugClicked = (action, props) => {
 		const res =
-			(action.type === actionTypes.SCROLL_TO_DRUG &&
-				props.id === action.drugId) ||
-			(action.type === actionTypes.NAV_VISIBLE &&
-				action.visible === true &&
-				this.props.nav.navLastOpenedDrug === props.id);
+			action.type === actionTypes.SCROLL_TO_DRUG &&
+			props.id === action.drugId;
+
 		return res;
 	};
 
@@ -65,7 +66,12 @@ class DisplayDrug extends Component {
 	}
 
 	componentDidMount() {
-		this.props.scrollToDrug(this.props.drug._id);
+		// Crude fix
+
+		setTimeout(() => {
+			if (this.props.nav.navLastOpenedDrug === this.props.drug._id)
+				this.props.scrollToDrug(this.props.drug._id);
+		}, 100);
 	}
 
 	render() {

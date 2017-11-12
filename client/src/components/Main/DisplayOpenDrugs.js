@@ -52,22 +52,14 @@ class DisplayOpenDrugs extends Component {
 			);
 		} else {
 			return (
-				<div
-					style={{
-						position: 'fixed',
-						top: '5px',
-						right: '15px',
-						background: '#fff'
+				<Select
+					placeHolder="Åbne stoffer"
+					options={this.renderOpen().selectOptions}
+					onChange={selected => {
+						this.onClick(selected.option.value);
 					}}
-				>
-					<Select
-						placeHolder="Åbne stoffer"
-						options={this.renderOpen().selectOptions}
-						onChange={selected => {
-							this.onClick(selected.option.value);
-						}}
-					/>
-				</div>
+					style={{ background: '#fff' }}
+				/>
 			);
 		}
 	}
