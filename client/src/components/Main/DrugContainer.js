@@ -6,6 +6,7 @@ import Box from 'grommet/components/Box';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import MenuIcon from 'grommet/components/icons/base/Menu';
+import Button from 'grommet/components/Button';
 
 import DisplayDrug from './DisplayDrug';
 import DisplayOpenDrugs from './DisplayOpenDrugs';
@@ -35,8 +36,11 @@ const DrugContainer = props => {
 		mobileHeader = (
 			<Header style={{ position: 'fixed', top: 0 }} fixed={true}>
 				<Box flex={true}>
-					<Title responsive={false} onClick={() => onClick(props)}>
-						<MenuIcon /> Stofliste
+					<Title responsive={false}>
+						<Button
+							icon={<MenuIcon />}
+							onClick={() => onClick(props)}
+						/>
 					</Title>
 				</Box>
 				<Box justify="end" direction="row" margin="small">

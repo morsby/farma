@@ -10,6 +10,7 @@ import Paragraph from 'grommet/components/Paragraph';
 import DownIcon from 'grommet/components/icons/base/Down';
 import UpIcon from 'grommet/components/icons/base/Up';
 import CloseIcon from 'grommet/components/icons/base/Close';
+import Button from 'grommet/components/Button';
 
 import * as actions from '../../actions';
 import * as actionTypes from '../../actions/types';
@@ -93,9 +94,9 @@ class DisplayDrug extends Component {
 		}
 
 		let icon = this.state.expanded ? (
-			<UpIcon onClick={this.onToggleClick} />
+			<Button icon={<UpIcon />} onClick={this.onToggleClick} />
 		) : (
-			<DownIcon onClick={this.onToggleClick} />
+			<Button icon={<DownIcon />} onClick={this.onToggleClick} />
 		);
 
 		return (
@@ -122,7 +123,7 @@ class DisplayDrug extends Component {
 					<span style={{ width: '25%', display: 'inline-block' }}>
 						{icon}
 					</span>
-					<CloseIcon onClick={this.onCloseClick} />
+					<Button icon={<CloseIcon />} onClick={this.onCloseClick} />
 				</div>
 			</Box>
 		);
