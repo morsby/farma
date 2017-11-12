@@ -16,6 +16,12 @@ body,
 .grommet .drug-content ul,
 .grommet .drug-content ul li {
 	max-width: 100%;
+	color: #fff;
+}
+
+.grommet .drug-content a {
+	text-decoration: underline !important;
+	font-weight: 450;
 }
 
 .grommetux-drop {
