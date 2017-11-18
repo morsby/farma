@@ -23,13 +23,25 @@ class DrugList extends Component {
 
 	generateListItems() {
 		return _.map(this.props.drugs, drug => {
-			// If-statement her kan slettes. Tjekkes igen senere, obs. performance
+			// Tjek om kapitlet er sat til skjult
+			let isChapterSelected = () => {
+				return _.map(drug.chapters, chapter => {
+					if (!chapter) {
+						chapter = 'Intet kapitel';
+					}
+					return this.props.chapters[chapter].visible;
+				});
+			};
+
+			// Tjek om navnet er filtreret og indgår i valgte i kapitler
 			if (
 				!drug.name
 					.toLowerCase()
-					.includes(this.props.searchVal.toLowerCase())
-			)
+					.includes(this.props.searchVal.toLowerCase()) ||
+				!isChapterSelected().includes(true)
+			) {
 				return null;
+			}
 			let style = { whiteSpace: 'pre-line' };
 			style = drug.important
 				? { ...style, fontWeight: 'bold' }
@@ -37,13 +49,6 @@ class DrugList extends Component {
 			style = drug.hasInfo
 				? { ...style }
 				: { ...style, color: 'rgb(122, 122, 122)' };
-			if (
-				!drug.name
-					.toLowerCase()
-					.includes(this.props.searchVal.toLowerCase())
-			) {
-				style = { ...style, display: 'none' };
-			}
 
 			let onClick;
 			if (drug.hasInfo) {

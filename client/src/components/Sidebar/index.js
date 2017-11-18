@@ -47,6 +47,10 @@ class Navigation extends Component {
 		this.setState({ filterVisible: !this.state.filterVisible });
 	}
 
+	onToggleChapter(chapter) {
+		this.props.toggleChapter(chapter);
+	}
+
 	onSearch(event) {
 		let val = event.target.value.replace(' ', '');
 
@@ -71,6 +75,7 @@ class Navigation extends Component {
 					key={chapter.chapter}
 					checked={chapter.visible}
 					toggle={true}
+					onClick={() => this.onToggleChapter(chapter.chapter)}
 				/>
 			);
 		});
@@ -153,6 +158,7 @@ class Navigation extends Component {
 				<Menu
 					drugs={this.props.drugs}
 					searchVal={this.state.searchTerm}
+					chapters={this.props.chapters}
 				/>
 			</Sidebar>
 		);
