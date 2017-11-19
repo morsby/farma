@@ -1,44 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import * as actions from '../actions';
 
 import { Container, Row, Col } from 'reactstrap';
 import Spinner from 'react-spinkit';
 
 import 'bootstrap/dist/css/bootstrap.css';
-//import '../style.css';
+import '../style.css';
 
 import Sidebar from './Sidebar';
 import Main from './Main';
+import DisplayOpenDrugs from './Main/DisplayOpenDrugs';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 
-		this.onResponsive = this.onResponsive.bind(this);
+		this.updateDimensions = _.debounce(
+			this.updateDimensions.bind(this),
+			300
+		);
 		this.displayApp = this.displayApp.bind(this);
 	}
 
 	componentDidMount() {
 		this.props.fetchDrugs();
+		this.updateDimensions();
+		window.addEventListener('resize', this.updateDimensions);
 	}
 
-	onResponsive(responsive) {
-		this.props.navResponsive(responsive);
+	updateDimensions() {
+		this.props.navResponsive(window.innerWidth);
 	}
 
 	displayApp() {
 		if (Object.keys(this.props.drugs).length === 0) {
 			return <Spinner name="ball-pulse-sync" fadeIn="none" />;
 		} else {
-			let priority = 'right';
+			let hideSidebar = null;
 			if (
-				this.props.nav.visible &&
-				this.props.nav.responsive === 'single'
+				this.props.nav.responsive === 'mobile' &&
+				this.props.nav.visible === false
 			) {
-				priority = 'left';
+				hideSidebar = 'd-none';
 			}
-
 			return (
 				<Container fluid={true}>
 					<Row>
@@ -48,8 +55,10 @@ class App extends Component {
 								position: 'fixed',
 								top: '0',
 								bottom: '0',
-								overflow: 'auto'
+								overflow: 'auto',
+								zIndex: '5'
 							}}
+							className={'sidebar ' + hideSidebar}
 						>
 							<Sidebar />
 						</Col>
@@ -65,8 +74,9 @@ class App extends Component {
 								right: '0',
 								overflow: 'auto'
 							}}
+							className="d-none d-sm-block"
 						>
-							Åbne stoffer
+							<DisplayOpenDrugs />
 						</Col>
 					</Row>
 				</Container>

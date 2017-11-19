@@ -5,12 +5,7 @@ import { scrollToWhen } from 'react-redux-scroll';
 
 import marked from 'marked';
 
-import Box from 'grommet/components/Box';
-import Paragraph from 'grommet/components/Paragraph';
-import DownIcon from 'grommet/components/icons/base/Down';
-import UpIcon from 'grommet/components/icons/base/Up';
-import CloseIcon from 'grommet/components/icons/base/Close';
-import Button from 'grommet/components/Button';
+import { Card, CardText, CardBody, CardSubtitle, Button } from 'reactstrap';
 
 import * as actions from '../../actions';
 import * as actionTypes from '../../actions/types';
@@ -30,9 +25,9 @@ class DisplayDrug extends Component {
 		this.ScrollableHeader = scrollToWhen(
 			this.isDrugClicked,
 			null,
-			{ yMargin: 85 },
+			{ yMargin: 50 },
 			['id']
-		)('h1');
+		)('h4');
 	}
 
 	isDrugClicked = (action, props) => {
@@ -50,6 +45,9 @@ class DisplayDrug extends Component {
 	renderChapters() {
 		let numberOfChaps = this.props.drug.chapters.length;
 		return this.props.drug.chapters.map((chap, i) => {
+			if (chap === null) {
+				chap = 'Intet kapitel';
+			}
 			if (numberOfChaps === i + 1) {
 				return `${chap}`;
 			} else {
@@ -68,7 +66,6 @@ class DisplayDrug extends Component {
 
 	componentDidMount() {
 		// Crude fix
-
 		setTimeout(() => {
 			if (this.props.nav.navLastOpenedDrug === this.props.drug._id)
 				this.props.scrollToDrug(this.props.drug._id);
@@ -78,54 +75,43 @@ class DisplayDrug extends Component {
 	render() {
 		let drug = this.props.drug;
 
-		let style = {};
-		if (drug.important) {
-			style.fontWeight = 'bold';
-		}
+		const important = drug.important ? 'important' : '';
+		const classes = `card-title ${important}`;
 
 		let content = null;
 		if (this.state.expanded) {
 			content = (
-				<div
+				<CardText
 					dangerouslySetInnerHTML={this.createMarkup(drug.content)}
 					className="drug-content"
 				/>
 			);
 		}
 
-		let icon = this.state.expanded ? (
-			<Button icon={<UpIcon />} onClick={this.onToggleClick} />
-		) : (
-			<Button icon={<DownIcon />} onClick={this.onToggleClick} />
-		);
-
 		return (
-			<Box
-				pad="medium"
-				margin="small"
-				colorIndex="brand"
-				style={{ display: 'block' }}
-			>
-				<this.ScrollableHeader
-					style={style}
-					ref={el => {
-						this.el = el;
-					}}
-					id={drug._id}
-				>
-					{drug.name}
-				</this.ScrollableHeader>
-				<Paragraph size="small">
-					Kapitel: {this.renderChapters()}
-				</Paragraph>
-				{content}
-				<div>
-					<span style={{ width: '25%', display: 'inline-block' }}>
-						{icon}
-					</span>
-					<Button icon={<CloseIcon />} onClick={this.onCloseClick} />
-				</div>
-			</Box>
+			<Card className="m-3">
+				<CardBody>
+					<this.ScrollableHeader
+						ref={el => {
+							this.el = el;
+						}}
+						id={drug._id}
+						className={classes}
+					>
+						{drug.name}
+					</this.ScrollableHeader>
+					<CardSubtitle>
+						Kapitel: {this.renderChapters()}
+					</CardSubtitle>
+					{content}
+					<Button className="m-3" onClick={this.onCloseClick}>
+						Luk
+					</Button>
+					<Button className="m-3" onClick={this.onToggleClick}>
+						Skjul
+					</Button>
+				</CardBody>
+			</Card>
 		);
 	}
 }

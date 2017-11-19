@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { IoIosCloseOutline } from 'react-icons/lib/io';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { IoIosCloseOutline, IoIosArrowUp } from 'react-icons/lib/io';
 import Menu from './Menu';
 
 import * as actions from '../../actions';
@@ -17,6 +17,7 @@ class Navigation extends Component {
 			searchTerm: '',
 			filterVisible: false
 		};
+		this.toggleSidebar = this.toggleSidebar.bind(this);
 		this.onDrugClick = this.onDrugClick.bind(this);
 		this.onChapterFilterClick = this.onChapterFilterClick.bind(this);
 		this.onSearch = this.onSearch.bind(this);
@@ -24,9 +25,12 @@ class Navigation extends Component {
 		this.onClear = this.onClear.bind(this);
 	}
 
+	toggleSidebar() {
+		this.props.navVisible();
+	}
+
 	onDrugClick() {
-		if (this.props.nav.responsive === 'single')
-			this.props.navVisible(this.props.nav.visible);
+		if (this.props.nav.responsive === 'mobile') this.props.navVisible();
 	}
 
 	onChapterFilterClick() {
@@ -83,18 +87,16 @@ class Navigation extends Component {
 
 		if (this.state.filterVisible === true) {
 			chapterFilter = (
-				<div>
+				<div className="pb-3">
 					<Form>{this.renderChapters()}</Form>
 
 					<Button
-						outline
 						color="success"
 						onClick={() => this.onToggleChapter('all')}
 					>
 						Vælg alle
 					</Button>
 					<Button
-						outline
 						color="danger"
 						onClick={() => this.onToggleChapter('none')}
 						className="ml-1"
@@ -104,39 +106,51 @@ class Navigation extends Component {
 				</div>
 			);
 		}
+		let icon =
+			this.props.nav.responsive === 'mobile' ? (
+				<IoIosArrowUp size={30} />
+			) : null;
 		return (
 			<div>
-				<h2>Stofliste</h2>
+				<div className="filtering">
+					<h2 onClick={this.toggleSidebar}>{icon}Stofliste</h2>
 
-				<Form inline>
-					<Label for="filter" className="sr-only">
-						Filtrer stoffer
-					</Label>
-					<div className="input-group">
-						<Input
-							name="filter"
-							id="filter"
-							placeholder="Filtrer"
-							type="text"
-							value={this.state.searchVal}
-							onChange={this.onSearch}
-							autoComplete="off"
-							autoCorrect="off"
-							autoCapitalize="off"
-							spellCheck="false"
-						/>
-						<div className="input-group-addon">
-							<IoIosCloseOutline
-								size={30}
-								onClick={this.onClear}
+					<Form inline>
+						<Label for="filter" className="sr-only">
+							Filtrer stoffer
+						</Label>
+						<div className="input-group">
+							<Input
+								name="filter"
+								id="filter"
+								placeholder="Filtrer"
+								type="text"
+								value={this.state.searchVal}
+								onChange={this.onSearch}
+								autoComplete="off"
+								autoCorrect="off"
+								autoCapitalize="off"
+								spellCheck="false"
 							/>
+							<div className="input-group-addon">
+								<IoIosCloseOutline
+									size={30}
+									onClick={this.onClear}
+								/>
+							</div>
 						</div>
-					</div>
-				</Form>
-				<h4 onClick={this.onChapterFilterClick}>
-					Filtrer efter stoffer
-				</h4>
-				{chapterFilter}
+					</Form>
+					<h4 onClick={this.onChapterFilterClick}>
+						<Button
+							color="warning"
+							className="my-3"
+							style={{ width: '100%' }}
+						>
+							Filtrer efter kapitel
+						</Button>
+					</h4>
+					{chapterFilter}
+				</div>
 				<Menu
 					drugs={this.props.drugs}
 					searchVal={this.state.searchTerm}

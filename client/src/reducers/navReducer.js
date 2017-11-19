@@ -1,7 +1,7 @@
 import * as actions from '../actions/types';
 
 let initialState = {
-	responsive: 'single',
+	responsive: 'mobile',
 	visible: true,
 	navLastOpenedDrug: null
 };
@@ -9,9 +9,13 @@ let initialState = {
 export default function(state = initialState, action) {
 	switch (action.type) {
 		case actions.NAV_RESPONSIVE:
-			return { ...state, responsive: action.responsive };
+			if (action.responsive < 768) {
+				return { ...state, responsive: 'mobile' };
+			}
+
+			return { ...state, responsive: 'wide' };
 		case actions.NAV_VISIBLE:
-			if (state.responsive === 'multiple') {
+			if (state.responsive !== 'mobile') {
 				return state;
 			}
 			return { ...state, visible: !state.visible };

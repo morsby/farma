@@ -1,72 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import * as actions from '../../actions';
 
-import Box from 'grommet/components/Box';
-import Select from 'grommet/components/Select';
+import { Nav, NavItem } from 'reactstrap';
 
-class DisplayOpenDrugs extends Component {
-	constructor() {
-		super();
-		this.onClick = this.onClick.bind(this);
-		this.renderOpen = this.renderOpen.bind(this);
-		this.state = { openDrugs: [] };
+const onClick = (id, props) => {
+	props.scrollToDrug(id);
+	if (props.toggleCollapsible) {
+		props.toggleCollapsible();
 	}
+};
 
-	onClick(id) {
-		this.props.scrollToDrug(id);
-	}
-
-	renderOpen() {
-		let renderList = [];
-		let selectOptions = [];
-
-		_.map(this.props.drugs, drug => {
-			if (drug.visible) {
-				renderList.push(
-					<a onClick={() => this.onClick(drug._id)} key={drug._id}>
-						{drug.name}
-					</a>
-				);
-				selectOptions.push({ label: drug.name, value: drug._id });
-			} else {
-				return null;
-			}
-		});
-
-		return {
-			renderList,
-			selectOptions
-		};
-	}
-
-	render() {
-		if (this.props.nav.responsive === 'multiple') {
+const renderOpen = (drugs, props) => {
+	return _.map(drugs, drug => {
+		if (drug.visible) {
 			return (
-				<Box size="small">
-					<h6>Åbne stoffer</h6>
-					{this.renderOpen().renderList}
-				</Box>
+				<NavItem
+					onClick={() => onClick(drug._id, props)}
+					key={drug._id}
+				>
+					{drug.name}
+				</NavItem>
 			);
 		} else {
-			return (
-				<Select
-					placeHolder="Åbne stoffer"
-					options={this.renderOpen().selectOptions}
-					onChange={selected => {
-						this.onClick(selected.option.value);
-					}}
-					style={{ background: '#fff' }}
-				/>
-			);
+			return null;
 		}
-	}
-}
+	});
+};
 
-function mapStateToProps({ nav }) {
-	return { nav };
+const DisplayOpenDrugs = props => {
+	return (
+		<Nav navbar className="open-drugs">
+			<h6>Åbne stoffer</h6>
+			{renderOpen(props.drugs, props)}
+		</Nav>
+	);
+};
+
+function mapStateToProps({ drugs, nav }) {
+	return { drugs: drugs.drugs, nav };
 }
 
 export default connect(mapStateToProps, actions)(DisplayOpenDrugs);

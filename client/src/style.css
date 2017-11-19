@@ -1,56 +1,106 @@
-/*html {
-	height: 100%;
-	overflow: auto;
-}
-body,
-#root {
-	height: 100%;
-	width: 100%;
-}
-
-/* Fix layout af stofindhold */
-.grommet .drug-content {
-	max-width: 100%;
+/*
+ GENERELT
+ */
+@media (max-width: 768px) {
+	body {
+		padding-top: 55px;
+	}
 }
 
-.grommet .drug-content p,
-.grommet .drug-content ul,
-.grommet .drug-content ol,
-.grommet .drug-content ul li,
-.grommet .drug-content ol li {
-	max-width: 100%;
-	color: #fff;
+.important {
+	font-weight: bold;
 }
 
-.grommet .drug-content a {
-	text-decoration: underline !important;
-	font-weight: 450;
+h4:not(.important) {
+	font-weight: normal;
 }
-
-.grommetux-drop {
-	z-index: 999 !important;
-	background-color: #fff !important;
-}
-
-.grommetux-header__container,
-.grommetux-header__wrapper {
-	height: 0px;
+.nav-item:hover {
+	cursor: pointer;
 }
 
 /*
-SelectChapter-styles
+SIDEBAR
  */
-.grommetux-form-fields {
-	justify-content: center;
-	align-items: flex-start;
-	display: flex;
-	flex-flow: row wrap;
-}
-.grommetux-check-box {
-	width: 75px;
+.sidebar {
+	background-color: rgb(134, 96, 211);
+	color: #fff;
 }
 
-.grommetux-check-box:last-child {
-	width: 160px;
+.sidebar h2 {
+	margin-top: 1px;
+	height: 50px;
 }
-*/
+
+.sidebar h2 svg,
+.navbar-brand svg {
+	margin-top: -5px;
+}
+
+.sidebar .nav li,
+.navbar .navbar-collapse .nav-item {
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.nav li:hover,
+.navbar .navbar-collapse .nav-item:hover {
+	background-color: rgb(168, 136, 232);
+}
+
+.sidebar .nav .no-info {
+	color: rgb(214, 214, 214);
+	cursor: not-allowed;
+}
+
+.filtering {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	background-color: rgb(134, 96, 211);
+	margin-left: -15px;
+	margin-right: -15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	z-index: 3;
+}
+
+/*
+NAVBAR
+ */
+.navbar {
+	background-color: rgb(134, 96, 211);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	color: #fff;
+	z-index: 3;
+}
+
+.navbar .navbar-brand {
+	font-size: 2rem;
+	font-weight: 500;
+	padding: 0;
+	margin-top: -12px;
+	margin-left: -1px;
+	cursor: pointer;
+}
+
+.navbar .navbar-collapse {
+	background-color: rgb(134, 96, 211);
+	text-align: right;
+	margin-left: -1rem;
+	margin-right: -1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+/*
+CARDS
+ */
+
+.card-title {
+	color: rgb(134, 96, 211);
+}

@@ -3,10 +3,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-import Menu from 'grommet/components/Menu';
-import List from 'grommet/components/List';
-import ListItem from 'grommet/components/ListItem';
-import CheckmarkIcon from 'grommet/components/icons/base/Checkmark';
+import { Nav, NavItem, NavLink } from 'reactstrap';
 
 class DrugList extends Component {
 	constructor(props) {
@@ -42,13 +39,10 @@ class DrugList extends Component {
 			) {
 				return null;
 			}
-			let style = { whiteSpace: 'pre-line' };
-			style = drug.important
-				? { ...style, fontWeight: 'bold' }
-				: { ...style };
-			style = drug.hasInfo
-				? { ...style }
-				: { ...style, color: 'rgb(122, 122, 122)' };
+
+			const important = drug.important ? 'important' : '';
+			const hasInfo = drug.hasInfo ? '' : 'no-info';
+			const classes = `${important} ${hasInfo}`;
 
 			let onClick;
 			if (drug.hasInfo) {
@@ -62,36 +56,37 @@ class DrugList extends Component {
 						style={{
 							position: 'absolute',
 							right: '10px',
-							float: 'right'
+							float: 'right',
+							zIndex: '2'
 						}}
 					>
-						<CheckmarkIcon />
+						√
 					</span>
 				);
 			}
 
 			return (
-				<ListItem
+				<NavItem
 					justify="between"
 					key={drug.name}
-					style={style}
+					className={classes}
 					onClick={onClick}
 				>
-					{drug.name}
+					<NavLink>
+						{drug.name}
 
-					{selected}
-				</ListItem>
+						{selected}
+					</NavLink>
+				</NavItem>
 			);
 		});
 	}
 
 	render() {
 		return (
-			<Menu responsive={false}>
-				<List style={{ overflow: 'hidden' }}>
-					{this.generateListItems()}
-				</List>
-			</Menu>
+			<Nav vertical className="mt-3">
+				{this.generateListItems()}
+			</Nav>
 		);
 	}
 }

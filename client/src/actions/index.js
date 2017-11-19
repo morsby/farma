@@ -32,8 +32,8 @@ export const scrollToDrug = drugId => {
 	};
 };
 
-export const navVisible = visible => {
-	return { type: actions.NAV_VISIBLE, visible: visible };
+export const navVisible = () => {
+	return { type: actions.NAV_VISIBLE };
 };
 
 export const navResponsive = responsive => {

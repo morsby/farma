@@ -1,65 +1,70 @@
-import React from 'react';
+import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 
-import Box from 'grommet/components/Box';
-import Header from 'grommet/components/Header';
-import Title from 'grommet/components/Title';
-import MenuIcon from 'grommet/components/icons/base/Menu';
-import Button from 'grommet/components/Button';
+import { Collapse, Navbar, NavbarBrand } from 'reactstrap';
+
+import { IoIosListOutline, IoIosArrowDown } from 'react-icons/lib/io';
 
 import DisplayDrug from './DisplayDrug';
 import DisplayOpenDrugs from './DisplayOpenDrugs';
 
 import * as actions from '../../actions';
 
-const renderDrug = drug => {
-	if (drug.visible) {
-		return <DisplayDrug drug={drug} key={drug._id} />;
-	} else {
-		return null;
+class DrugContainer extends Component {
+	constructor() {
+		super();
+		this.state = { isOpen: false };
+		this.toggleSidebar = this.toggleSidebar.bind(this);
+		this.toggleCollapsible = this.toggleCollapsible.bind(this);
 	}
-};
+	toggleSidebar() {
+		this.props.navVisible();
+	}
 
-const onClick = props => {
-	props.navVisible(props.nav.visible);
-};
+	toggleCollapsible() {
+		this.setState({ isOpen: !this.state.isOpen });
+	}
 
-const DrugContainer = props => {
-	let openDrugs = '';
-	let style = { overflowY: 'scroll' };
-	let mobileHeader = '';
-	let marginTop = '0px';
-	if (props.nav.responsive === 'single') {
-		openDrugs = <DisplayOpenDrugs drugs={props.drugs} />;
-		style = {};
-		mobileHeader = (
-			<Header style={{ position: 'fixed', top: 0 }} fixed={true}>
-				<Box flex={true}>
-					<Title responsive={false}>
-						<Button
-							icon={<MenuIcon />}
-							onClick={() => onClick(props)}
+	renderDrug = drug => {
+		if (drug.visible) {
+			return <DisplayDrug drug={drug} key={drug._id} />;
+		} else {
+			return null;
+		}
+	};
+
+	render() {
+		let mobileHeader;
+		if (this.props.nav.responsive === 'mobile') {
+			mobileHeader = (
+				<Navbar color="faded" dark>
+					<NavbarBrand onClick={this.toggleSidebar}>
+						<IoIosArrowDown size={30} />Stofliste
+					</NavbarBrand>
+					<IoIosListOutline
+						size={30}
+						onClick={this.toggleCollapsible}
+					/>
+					<Collapse isOpen={this.state.isOpen} navbar>
+						<DisplayOpenDrugs
+							toggleCollapsible={this.toggleCollapsible}
 						/>
-					</Title>
-				</Box>
-				<Box justify="end" direction="row" margin="small">
-					{openDrugs}
-				</Box>
-			</Header>
-		);
-		marginTop = '72px';
-	}
+					</Collapse>
+				</Navbar>
+			);
+		}
 
-	return (
-		<Box full="vertical" style={style}>
-			{mobileHeader}
-			<Box style={{ marginTop }}>
-				{_.map(props.drugs, drug => renderDrug(drug))}
-			</Box>
-		</Box>
-	);
-};
+		return (
+			<div>
+				{mobileHeader}
+				<div>
+					{_.map(this.props.drugs, drug => this.renderDrug(drug))}
+				</div>
+			</div>
+		);
+	}
+}
 
 function mapStateToProps({ drugs, nav }) {
 	return { drugs: drugs.drugs, chapters: drugs.chapters, nav };
