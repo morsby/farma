@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import GrommetApp from 'grommet/components/App';
-import Split from 'grommet/components/Split';
-import Box from 'grommet/components/Box';
+import { Container, Row, Col } from 'reactstrap';
 import Spinner from 'react-spinkit';
 
-import 'grommet/grommet.min.css';
-import '../style.css';
+import 'bootstrap/dist/css/bootstrap.css';
+//import '../style.css';
 
 import Sidebar from './Sidebar';
 import Main from './Main';
@@ -31,11 +29,7 @@ class App extends Component {
 
 	displayApp() {
 		if (Object.keys(this.props.drugs).length === 0) {
-			return (
-				<Box align="center" full="vertical" justify="center">
-					<Spinner name="ball-pulse-sync" fadeIn="none" />
-				</Box>
-			);
+			return <Spinner name="ball-pulse-sync" fadeIn="none" />;
 		} else {
 			let priority = 'right';
 			if (
@@ -46,20 +40,42 @@ class App extends Component {
 			}
 
 			return (
-				<Split
-					flex="right"
-					priority={priority}
-					onResponsive={this.onResponsive}
-				>
-					<Sidebar />
-					<Main />
-				</Split>
+				<Container fluid={true}>
+					<Row>
+						<Col
+							md={2}
+							style={{
+								position: 'fixed',
+								top: '0',
+								bottom: '0',
+								overflow: 'auto'
+							}}
+						>
+							<Sidebar />
+						</Col>
+						<Col md={{ size: 8, offset: 2 }}>
+							<Main />
+						</Col>
+						<Col
+							md="2"
+							style={{
+								position: 'fixed',
+								top: '0',
+								bottom: '0',
+								right: '0',
+								overflow: 'auto'
+							}}
+						>
+							Åbne stoffer
+						</Col>
+					</Row>
+				</Container>
 			);
 		}
 	}
 
 	render() {
-		return <GrommetApp centered={false}>{this.displayApp()}</GrommetApp>;
+		return this.displayApp();
 	}
 }
 

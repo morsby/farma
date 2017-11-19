@@ -9,16 +9,19 @@
 	},
 	"dependencies": {
 		"axios": "^0.17.1",
+		"bootstrap": "^4.0.0-beta.2",
 		"grommet": "https://github.com/grommet/grommet/tarball/stable",
 		"lodash": "^4.17.4",
 		"marked": "^0.3.6",
 		"node-emoji": "^1.8.1",
 		"react": "^16.1.0",
 		"react-dom": "^16.1.0",
+		"react-icons": "^2.2.7",
 		"react-redux": "^5.0.6",
 		"react-redux-scroll": "0.0.14",
 		"react-scripts": "1.0.17",
 		"react-spinkit": "^3.0.0",
+		"reactstrap": "^5.0.0-alpha.4",
 		"redux": "^3.7.2"
 	},
 	"scripts": {

@@ -1,4 +1,4 @@
-html {
+/*html {
 	height: 100%;
 	overflow: auto;
 }
@@ -8,6 +8,7 @@ body,
 	width: 100%;
 }
 
+/* Fix layout af stofindhold */
 .grommet .drug-content {
 	max-width: 100%;
 }
@@ -36,6 +37,9 @@ body,
 	height: 0px;
 }
 
+/*
+SelectChapter-styles
+ */
 .grommetux-form-fields {
 	justify-content: center;
 	align-items: flex-start;
@@ -49,3 +53,4 @@ body,
 .grommetux-check-box:last-child {
 	width: 160px;
 }
+*/

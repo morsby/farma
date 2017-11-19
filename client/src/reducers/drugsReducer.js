@@ -47,14 +47,25 @@ export default function(state = { drugs: {}, chapters: {} }, action) {
 				return state;
 			}
 		case actions.TOGGLE_CHAPTER:
-			const val = state.chapters[action.chapter].visible;
+			let newState;
+			if (action.chapter === 'all') {
+				newState = _.forEach(state.chapters, chapter => {
+					_.set(chapter, 'visible', true);
+				});
+			} else if (action.chapter === 'none') {
+				newState = _.forEach(state.chapters, chapter => {
+					_.set(chapter, 'visible', false);
+				});
+			} else {
+				const val = state.chapters[action.chapter].visible;
 
-			const newState = _.set(
-				{ ...state.chapters },
-				[action.chapter, 'visible'],
-				!val
-			);
-			return { ...state, chapters: newState };
+				newState = _.set(
+					{ ...state.chapters },
+					[action.chapter, 'visible'],
+					!val
+				);
+			}
+			return { ...state, chapters: { ...newState } };
 
 		default:
 			return state;
