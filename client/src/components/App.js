@@ -8,7 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Spinner from 'react-spinkit';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../style.css';
+import '../style.min.css';
 
 import Sidebar from './Sidebar';
 import Main from './Main';
