@@ -67,14 +67,7 @@ class App extends Component {
 						</Col>
 						<Col
 							md="2"
-							style={{
-								position: 'fixed',
-								top: '0',
-								bottom: '0',
-								right: '0',
-								overflow: 'auto'
-							}}
-							className="d-none d-sm-block"
+							className="display-open-drugs d-none d-sm-block"
 						>
 							<DisplayOpenDrugs />
 						</Col>

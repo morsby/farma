@@ -58,13 +58,17 @@ SIDEBAR
 	background-color: $primary;
 	color: #fff;
 	max-height: 100%;
+	border-right: 1px solid $secondary-1;
+
+	.sidebar h2 {
+		margin-top: 1px;
+		height: 50px;
+	}
 }
 
-.sidebar h2 {
-	margin-top: 1px;
-	height: 50px;
-}
-
+/*
+SIDEBAR OG NAVBAR
+ */
 .sidebar h2 svg,
 .navbar-brand svg {
 	margin-top: -5px;
@@ -76,11 +80,10 @@ SIDEBAR
 	margin-right: -15px;
 	padding-left: 15px;
 	padding-right: 15px;
-}
 
-.nav li:hover,
-.navbar .navbar-collapse .nav-item:hover {
-	background-color: lighten($primary, 15%);
+	&:hover {
+		background-color: lighten($primary, 15%);
+	}
 }
 
 .sidebar .nav .no-info {
@@ -89,17 +92,21 @@ SIDEBAR
 }
 
 .filtering {
-	position: -webkit-sticky;
-	position: sticky;
+	position: fixed;
+	width: 100%;
 	top: 0;
-	overflow: scroll;
+	overflow: auto;
 	max-height: 100vh;
 	background-color: $primary;
-	margin-left: -15px;
-	margin-right: -15px;
-	padding-left: 15px;
-	padding-right: 15px;
 	z-index: 3;
+	margin: 0 -15px;
+	padding: 5px 15px;
+
+	@media (min-width: 768px) {
+		position: -webkit-sticky;
+		position: sticky;
+		width: inherit;
+	}
 }
 
 /*
@@ -137,6 +144,48 @@ NAVBAR
 CARDS
  */
 
-.card-title {
-	color: $primary;
+.card {
+	border: 1px solid $primary;
+
+	.card-title {
+		color: $primary;
+	}
+
+	button {
+		background-color: $primary;
+		border-color: $primary;
+
+		&:hover {
+			background-color: $complementary;
+			border-color: $complementary;
+			color: black;
+		}
+	}
+}
+
+/*
+DisplayOpenDrugs
+ */
+.display-open-drugs {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	overflow: auto;
+	border-left: 1px solid $secondary-1;
+
+	.open-drugs {
+		margin-top: 15px;
+	}
+}
+
+/* OVERSKRIV BOOTSTRAP */
+.btn-warning {
+	background-color: $complementary;
+	border-color: $complementary;
+
+	&:hover {
+		background-color: darken($complementary, 20%);
+		border-color: darken($complementary, 20%);
+	}
 }

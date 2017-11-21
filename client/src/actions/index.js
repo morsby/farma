@@ -25,6 +25,12 @@ export const toggleChapter = chapter => {
 	};
 };
 
+export const closeAllDrugs = () => {
+	return {
+		type: actions.CLOSE_ALL_DRUGS
+	};
+};
+
 export const scrollToDrug = drugId => {
 	return {
 		type: actions.SCROLL_TO_DRUG,

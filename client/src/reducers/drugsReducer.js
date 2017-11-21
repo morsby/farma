@@ -2,6 +2,7 @@ import * as actions from '../actions/types';
 import _ from 'lodash';
 
 export default function(state = { drugs: {}, chapters: {} }, action) {
+	let newState;
 	switch (action.type) {
 		case actions.FETCH_DRUGS:
 			let chaptersArr = [];
@@ -37,7 +38,7 @@ export default function(state = { drugs: {}, chapters: {} }, action) {
 			// If content contains anything but whitespace
 			if (/\S/.test(state.drugs[action.drugId].content)) {
 				const val = state.drugs[action.drugId].visible;
-				const newState = _.set(
+				let newState = _.set(
 					{ ...state.drugs },
 					[action.drugId, 'visible'],
 					!val
@@ -46,8 +47,14 @@ export default function(state = { drugs: {}, chapters: {} }, action) {
 			} else {
 				return state;
 			}
+
+		case actions.CLOSE_ALL_DRUGS:
+			newState = _.forEach(state.drugs, drug => {
+				_.set(drug, 'visible', false);
+			});
+			return { ...state, drugs: { ...newState } };
+
 		case actions.TOGGLE_CHAPTER:
-			let newState;
 			if (action.chapter === 'all') {
 				newState = _.forEach(state.chapters, chapter => {
 					_.set(chapter, 'visible', true);
