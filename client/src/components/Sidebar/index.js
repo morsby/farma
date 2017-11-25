@@ -87,12 +87,13 @@ class Navigation extends Component {
 
 		if (this.state.filterVisible === true) {
 			chapterFilter = (
-				<div className="pb-3">
+				<div className="py-3  chapter-filter">
 					<Form>{this.renderChapters()}</Form>
 
 					<Button
 						color="success"
 						onClick={() => this.onToggleChapter('all')}
+						size="sm"
 					>
 						Vælg alle
 					</Button>
@@ -100,6 +101,7 @@ class Navigation extends Component {
 						color="danger"
 						onClick={() => this.onToggleChapter('none')}
 						className="ml-1"
+						size="sm"
 					>
 						Fravælg alle
 					</Button>
@@ -143,7 +145,7 @@ class Navigation extends Component {
 					<h4 onClick={this.onChapterFilterClick}>
 						<Button
 							color="warning"
-							className="my-3"
+							className="mt-3"
 							style={{ width: '100%' }}
 						>
 							Filtrer efter kapitel

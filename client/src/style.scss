@@ -1,4 +1,12 @@
 // compileOnSave
+/* Mixins */
+@mixin margin-padding-fix($px: 15px) {
+	margin-left: -$px;
+	margin-right: -$px;
+	padding-left: $px;
+	padding-right: $px;
+}
+
 /* Farver 
 
 // As RGBa codes */
@@ -76,10 +84,7 @@ SIDEBAR OG NAVBAR
 
 .sidebar .nav li,
 .navbar .navbar-collapse .nav-item {
-	margin-left: -15px;
-	margin-right: -15px;
-	padding-left: 15px;
-	padding-right: 15px;
+	@include margin-padding-fix;
 
 	&:hover {
 		background-color: lighten($primary, 15%);
@@ -106,6 +111,11 @@ SIDEBAR OG NAVBAR
 		position: -webkit-sticky;
 		position: sticky;
 		width: inherit;
+	}
+
+	.chapter-filter {
+		background-color: lighten($primary, 10%);
+		@include margin-padding-fix;
 	}
 }
 
@@ -176,6 +186,14 @@ DisplayOpenDrugs
 
 	.open-drugs {
 		margin-top: 15px;
+
+		h6 {
+			line-height: 30px;
+
+			button {
+				float: right;
+			}
+		}
 	}
 }
 
@@ -188,4 +206,15 @@ DisplayOpenDrugs
 		background-color: darken($complementary, 20%);
 		border-color: darken($complementary, 20%);
 	}
+}
+
+/* SVG non-selectable */
+svg {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }

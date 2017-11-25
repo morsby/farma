@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import * as actions from '../../actions';
 
-import { Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem, Button } from 'reactstrap';
 
 import { IoIosCloseEmpty } from 'react-icons/lib/io';
 
@@ -38,19 +38,35 @@ const renderOpen = (drugs, props) => {
 	});
 };
 
+const isNull = arr => {
+	return arr.join().replace(/,/g, '').length === 0;
+};
+
 const DisplayOpenDrugs = props => {
+	let openDrugs = renderOpen(props.drugs, props);
+
+	let button = isNull(openDrugs) ? (
+		''
+	) : (
+		<Button
+			outline
+			onClick={() => onCloseAll(props)}
+			color="danger"
+			size="sm"
+			className="p-0"
+		>
+			<IoIosCloseEmpty size={30} />
+		</Button>
+	);
+
 	return (
 		<Nav navbar className="open-drugs">
 			<h6>
 				Åbne stoffer
-				<IoIosCloseEmpty
-					onClick={() => onCloseAll(props)}
-					className="float-right"
-					size={24}
-				/>
+				{button}
 			</h6>
 
-			{renderOpen(props.drugs, props)}
+			{openDrugs}
 		</Nav>
 	);
 };
