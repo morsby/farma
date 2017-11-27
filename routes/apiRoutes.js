@@ -27,17 +27,12 @@ module.exports = app => {
 
 	app.get('/api/drugs/search/:search_term', (req, res) => {
 		if (req.params.search_term) {
-			let searchParam = `"${req.params.search_term.replace(' ', '" "')}"`;
-			//searchParam = req.params.search_term;
-			//// TODO: Search virker ikke...
 			searchParams = req.params.search_term.split(' ');
 			searchParam = '^';
 			searchParams.map(param => {
 				searchParam += `(?=[\\s\\S]*${param}[\\s\\S]*)`;
 			});
 			searchParam += '[\\s\\S]+$';
-
-			console.log(searchParam);
 
 			Drug.find({
 				content: new RegExp(searchParam, 'i')

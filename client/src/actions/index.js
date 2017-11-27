@@ -52,3 +52,14 @@ export const navLastOpenedDrug = drugId => {
 		drugId: drugId
 	};
 };
+
+export const searchDrugs = searchTerm => async dispatch => {
+	if (searchTerm !== null) {
+		const res = await axios.get(`/api/drugs/search/${searchTerm}`);
+
+		return dispatch({
+			type: actions.SEARCH_DRUGS,
+			ids: res.data
+		});
+	}
+};

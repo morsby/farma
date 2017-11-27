@@ -51,6 +51,7 @@ class App extends Component {
 					<Row>
 						<Col
 							md={2}
+							sm={4}
 							style={{
 								position: 'fixed',
 								top: '0',
@@ -62,12 +63,15 @@ class App extends Component {
 						>
 							<Sidebar />
 						</Col>
-						<Col md={{ size: 8, offset: 2 }}>
+						<Col
+							md={{ size: 8, offset: 2 }}
+							sm={{ size: 8, offset: 4 }}
+						>
 							<Main />
 						</Col>
 						<Col
 							md="2"
-							className="display-open-drugs d-none d-sm-block"
+							className="display-open-drugs d-sm-none d-md-block"
 						>
 							<DisplayOpenDrugs />
 						</Col>

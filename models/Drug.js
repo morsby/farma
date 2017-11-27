@@ -9,4 +9,6 @@ const drugSchema = new Schema({
 	content: String
 });
 
+drugSchema.index({ content: 'text' });
+
 module.exports = mongoose.model('drugs', drugSchema);

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
 import { Nav, NavItem, NavLink } from 'reactstrap';
+import { IoIosCheckmarkOutline } from 'react-icons/lib/io';
 
 class DrugList extends Component {
 	constructor(props) {
@@ -30,11 +31,17 @@ class DrugList extends Component {
 				});
 			};
 
-			// Tjek om navnet er filtreret og indgår i valgte i kapitler
 			if (
-				!drug.name
-					.toLowerCase()
-					.includes(this.props.searchVal.toLowerCase()) ||
+				this.props.search &&
+				!this.props.searchResults.includes(drug._id)
+			) {
+				return null;
+			} else if (
+				// Tjek om navnet er filtreret og indgår i valgte i kapitler
+				(!this.props.search &&
+					!drug.name
+						.toLowerCase()
+						.includes(this.props.searchVal.toLowerCase())) ||
 				!isChapterSelected().includes(true)
 			) {
 				return null;
@@ -52,15 +59,8 @@ class DrugList extends Component {
 			let selected;
 			if (drug.visible) {
 				selected = (
-					<span
-						style={{
-							position: 'absolute',
-							right: '10px',
-							float: 'right',
-							zIndex: '2'
-						}}
-					>
-						√
+					<span className="drug-is-open">
+						<IoIosCheckmarkOutline size={24} />
 					</span>
 				);
 			}
