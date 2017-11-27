@@ -73,7 +73,20 @@ class DisplayDrug extends Component {
 	}
 
 	render() {
+		// TODO: <mark> tag opdateres ikke? Overskriver kilden?
 		let drug = this.props.drug;
+		if (this.props.search.active && this.props.search.term) {
+			let searchTerms = this.props.search.term.split(' ');
+
+			searchTerms.map(term => {
+				drug.content = drug.content.replace(
+					new RegExp(term, 'ig'),
+					'<mark>' + term + '</mark>'
+				);
+
+				return null;
+			});
+		}
 
 		const important = drug.important ? 'important' : '';
 		const classes = `card-title ${important}`;
@@ -116,8 +129,8 @@ class DisplayDrug extends Component {
 	}
 }
 
-function mapStateToProps({ nav }) {
-	return { nav };
+function mapStateToProps({ nav, search }) {
+	return { nav, search };
 }
 
 export default connect(mapStateToProps, actions)(DisplayDrug);

@@ -35,7 +35,10 @@ module.exports = app => {
 			searchParam += '[\\s\\S]+$';
 
 			Drug.find({
-				content: new RegExp(searchParam, 'i')
+				$or: [
+					{ content: new RegExp(searchParam, 'i') },
+					{ name: new RegExp(req.params.search_term) }
+				]
 			})
 				.select('id')
 				.exec((err, docs) => {

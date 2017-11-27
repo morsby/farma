@@ -16,8 +16,7 @@ class Navigation extends Component {
 		this.state = {
 			searchVal: '',
 			searchTerm: '',
-			filterVisible: false,
-			search: false
+			filterVisible: false
 		};
 		this.toggleSidebar = this.toggleSidebar.bind(this);
 		this.onDrugClick = this.onDrugClick.bind(this);
@@ -46,7 +45,7 @@ class Navigation extends Component {
 
 	onSearch(event) {
 		let val = event.target.value;
-		if (!this.state.search) {
+		if (!this.props.search.active) {
 			val = val.replace(' ', '');
 		}
 		this.setState({ searchVal: val });
@@ -55,15 +54,16 @@ class Navigation extends Component {
 
 	toggleSearch(search) {
 		if (search === 'name') {
-			this.setState({ search: false });
+			this.props.searchActive(false);
 		} else {
-			this.setState({ search: true });
+			this.props.searchActive(true);
+			this.props.searchDrugs(this.state.searchTerm);
 		}
 		this.setSearchTerm(this.state.searchVal);
 	}
 
 	setSearchTerm(term) {
-		if (this.state.search) {
+		if (this.props.search.active) {
 			this.props.searchDrugs(term);
 		}
 		this.setState({ searchTerm: term });
@@ -182,8 +182,8 @@ class Navigation extends Component {
 					drugs={drugs}
 					searchVal={this.state.searchTerm}
 					chapters={this.props.chapters}
-					search={this.state.search}
-					searchResults={this.props.search}
+					search={this.props.search.active}
+					searchResults={this.props.search.results}
 				/>
 			</div>
 		);

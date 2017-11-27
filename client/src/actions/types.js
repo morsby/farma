@@ -8,4 +8,5 @@ export const NAV_RESPONSIVE = 'nav_responsive';
 export const NAV_VISIBLE = 'nav_visible';
 export const NAV_LAST_OPENED_DRUG = 'nav_last_opened_drug';
 
+export const SEARCH_ACTIVE = 'search_active';
 export const SEARCH_DRUGS = 'search_drugs';

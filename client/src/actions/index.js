@@ -53,12 +53,20 @@ export const navLastOpenedDrug = drugId => {
 	};
 };
 
+export const searchActive = bool => {
+	return {
+		type: actions.SEARCH_ACTIVE,
+		bool
+	};
+};
+
 export const searchDrugs = searchTerm => async dispatch => {
 	if (searchTerm !== null) {
 		const res = await axios.get(`/api/drugs/search/${searchTerm}`);
 
 		return dispatch({
 			type: actions.SEARCH_DRUGS,
+			term: searchTerm,
 			ids: res.data
 		});
 	}
