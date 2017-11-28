@@ -19,6 +19,7 @@ class DisplayDrug extends Component {
 		this.state = { expanded: true };
 		this.renderChapters = this.renderChapters.bind(this);
 		this.isDrugClicked = this.isDrugClicked.bind(this);
+		this.createMarkup = this.createMarkup.bind(this);
 		this.onToggleClick = this.onToggleClick.bind(this);
 		this.onCloseClick = this.onCloseClick.bind(this);
 
@@ -39,7 +40,47 @@ class DisplayDrug extends Component {
 	};
 
 	createMarkup(md) {
-		return { __html: marked(md) };
+		let changedMd = md;
+
+		//TODO: Søgning matcher ikke alle cases (fx hGH). Find bedre case-insensitive måde?
+
+		if (this.props.search.active && this.props.search.term) {
+			let searchTerms = [];
+
+			let markedTerms = [];
+
+			this.props.search.term.split(' ').map(term => {
+				return searchTerms.push(
+					term.toUpperCase(),
+					term.toLowerCase(),
+					`${term[0].toUpperCase()}${term.substr(1)}`
+				);
+			});
+
+			searchTerms.map(term => {
+				return markedTerms.push(`<mark>${term}</mark>`);
+			});
+
+			const replaceBulk = (str, findArray, replaceArray) => {
+				var i,
+					regex = [],
+					map = {};
+				for (i = 0; i < findArray.length; i++) {
+					regex.push(
+						findArray[i].replace('[-[]{}()*+?.\\^$|#,]', '\\$0')
+					);
+					map[findArray[i]] = replaceArray[i];
+				}
+				regex = regex.join('|');
+				str = str.replace(new RegExp(regex, 'g'), function(matched) {
+					return map[matched];
+				});
+				return str;
+			};
+
+			changedMd = replaceBulk(md, searchTerms, markedTerms);
+		}
+		return { __html: marked(changedMd) };
 	}
 
 	renderChapters() {
@@ -73,20 +114,7 @@ class DisplayDrug extends Component {
 	}
 
 	render() {
-		// TODO: <mark> tag opdateres ikke? Overskriver kilden?
 		let drug = this.props.drug;
-		if (this.props.search.active && this.props.search.term) {
-			let searchTerms = this.props.search.term.split(' ');
-
-			searchTerms.map(term => {
-				drug.content = drug.content.replace(
-					new RegExp(term, 'ig'),
-					'<mark>' + term + '</mark>'
-				);
-
-				return null;
-			});
-		}
 
 		const important = drug.important ? 'important' : '';
 		const classes = `card-title ${important}`;
