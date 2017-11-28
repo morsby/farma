@@ -128,6 +128,12 @@ class DisplayDrug extends Component {
 				/>
 			);
 		}
+		let VisSkjul;
+		if (this.state.expanded) {
+			VisSkjul = 'Skjul';
+		} else {
+			VisSkjul = 'Vis';
+		}
 
 		return (
 			<Card className="m-3">
@@ -149,7 +155,7 @@ class DisplayDrug extends Component {
 						Luk
 					</Button>
 					<Button className="m-3" onClick={this.onToggleClick}>
-						Skjul
+						{VisSkjul}
 					</Button>
 				</CardBody>
 			</Card>

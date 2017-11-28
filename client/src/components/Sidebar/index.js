@@ -70,6 +70,9 @@ class Navigation extends Component {
 	}
 
 	onClear() {
+		if (this.props.search.active) {
+			this.props.searchDrugs('');
+		}
 		this.setSearchTerm.cancel();
 		this.setState({ searchVal: '', searchTerm: '' });
 	}
