@@ -1,5 +1,5 @@
 import { promises as fs } from "fs";
-import fm, { FrontMatterResult } from "front-matter";
+import matter from "gray-matter";
 export interface Drug {
   name: string;
   important: 0 | 1;
@@ -22,10 +22,10 @@ export async function get(request, context) {
       const content = await fs.readFile(`src/lib/drugs/${file}`, {
         encoding: "utf-8",
       });
-      const md: FrontMatterResult<Drug> = fm(content);
+      const md = matter(content);
       return {
-        ...md.attributes,
-        body: md.body,
+        ...md.data,
+        body: md.content,
       };
     })
   );
