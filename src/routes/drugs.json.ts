@@ -1,5 +1,7 @@
 import { promises as fs } from "fs";
-import matter from "gray-matter";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const matter = require("gray-matter");
 export interface Drug {
   name: string;
   important: 0 | 1;
