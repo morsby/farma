@@ -1,7 +1,7 @@
 ---
 name: "cyproteronacetat"
 important: 0
-chapters:  
+chapters:
   - 32
 hasinfo: 1
 sorting: "cyproteronacetat"
@@ -15,6 +15,7 @@ Gestagen. Pregnan.
 
 Anti-androgen effekt via androgenreceptorer.
 
-Anvendelse: Mænd - prostata hyperplasi, cancer prostatae, sjældent hyperseksualisme. Kvinder - hirsutisme, akne, virilisering (se progesteron).
+Anvendelse: Mænd - prostata hyperplasi, cancer prostatae, sjældent
+hyperseksualisme. Kvinder - hirsutisme, akne, virilisering (se progesteron).
 
 Se progesteron.

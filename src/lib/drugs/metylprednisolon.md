@@ -1,7 +1,7 @@
 ---
 name: "metylprednisolon"
 important: 0
-chapters:  
+chapters:
   - 32
 hasinfo: 1
 sorting: "metylprednisolon"

@@ -1,7 +1,7 @@
 ---
 name: "acetylcystein"
 important: 0
-chapters:  
+chapters:
   - 29
 hasinfo: 1
 sorting: "acetylcystein"
@@ -13,4 +13,5 @@ Ekspektorantia. Nedsætter luftvejssekretets viskositet. Antioxidant?
 
 20% reduktion i antal eksacerbationer ved kronisk bronkitis.
 
-Farmakokinetik: Peroral indgift, biotilg. 5% (deacetyleres i tarm). c-max efter 0,5 timer. Elimineres langsomt gennem nyrer.
+Farmakokinetik: Peroral indgift, biotilg. 5% (deacetyleres i tarm). c-max efter
+0,5 timer. Elimineres langsomt gennem nyrer.

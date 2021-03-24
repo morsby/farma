@@ -1,7 +1,7 @@
 ---
 name: "opium"
 important: 0
-chapters:  
+chapters:
   - 40
 hasinfo: 1
 sorting: "opium"

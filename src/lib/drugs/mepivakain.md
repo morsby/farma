@@ -1,7 +1,7 @@
 ---
 name: "mepivakain"
 important: 0
-chapters:  
+chapters:
   - 43
 hasinfo: 1
 sorting: "mepivakain"

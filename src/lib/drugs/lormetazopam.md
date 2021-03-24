@@ -1,7 +1,7 @@
 ---
 name: "lormetazopam"
 important: 0
-chapters:  
+chapters:
   - 46
 hasinfo: 1
 sorting: "lormetazopam"

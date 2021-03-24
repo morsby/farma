@@ -1,7 +1,7 @@
 ---
 name: "lercanidipin"
 important: 0
-chapters:  
+chapters:
   - 23
 hasinfo: 1
 sorting: "lercanidipin"

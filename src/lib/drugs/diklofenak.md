@@ -1,7 +1,7 @@
 ---
 name: "diklofenak"
 important: 0
-chapters:  
+chapters:
   - 50
 hasinfo: 1
 sorting: "diklofenak"
@@ -17,6 +17,7 @@ Overvejende COX-2-hæmning (jf. høj kardiovaskulær risiko).
 
 Virknignsvarighed længere end ibuprofens (ibuprofen: 4-8 timer)
 
-Fra forelæsning: Kan bruges parenteralt ved uretersten. Høj kardiovaskulær risiko.
+Fra forelæsning: Kan bruges parenteralt ved uretersten. Høj kardiovaskulær
+risiko.
 
 Se acetylsalicylsyre.

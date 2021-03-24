@@ -1,7 +1,7 @@
 ---
 name: "prilokain"
 important: 0
-chapters:  
+chapters:
   - 43
 hasinfo: 1
 sorting: "prilokain"
@@ -13,4 +13,6 @@ Lokalanalgetikum (amidgruppen).
 
 Se bupivakain.
 
-Ad farmakokinetik: Clerarance på 2400 mL/min - betydelig ekstrahepatisk elimination. Metabolitter associeret med udvikling af methæmoglobinæmi (ikke et klinisk problem ved enkeltdosisindgift).
+Ad farmakokinetik: Clerarance på 2400 mL/min - betydelig ekstrahepatisk
+elimination. Metabolitter associeret med udvikling af methæmoglobinæmi (ikke et
+klinisk problem ved enkeltdosisindgift).

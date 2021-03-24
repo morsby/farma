@@ -1,7 +1,7 @@
 ---
 name: "mometason"
 important: 0
-chapters:  
+chapters:
   - 29
 hasinfo: 1
 sorting: "mometason"
@@ -15,4 +15,6 @@ Mere lipofilt og selektivt for GR end kortisol.
 
 Se glukokortikoider.
 
-Farmakokinetik: Efter inhalation: Ringe abs (inh. 200-400 µg => plasmakonc ≤ 50 pg/mL) => interaktioner formentlig uvæsentlige. Sekundær abs. fra GI-kanal kan forekomme.
+Farmakokinetik: Efter inhalation: Ringe abs (inh. 200-400 µg => plasmakonc ≤ 50
+pg/mL) => interaktioner formentlig uvæsentlige. Sekundær abs. fra GI-kanal kan
+forekomme.

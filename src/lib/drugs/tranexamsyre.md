@@ -1,7 +1,7 @@
 ---
 name: "tranexamsyre"
 important: 0
-chapters:  
+chapters:
   - 27
 hasinfo: 1
 sorting: "tranexamsyre"

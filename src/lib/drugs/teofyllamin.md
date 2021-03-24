@@ -1,7 +1,7 @@
 ---
 name: "teofyllamin"
 important: 0
-chapters:  
+chapters:
   - 29
 hasinfo: 1
 sorting: "teofyllamin"

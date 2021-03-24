@@ -1,14 +1,45 @@
-<script lang="ts">
+<script context="module" lang="ts">
+	/**
+	 * @param {import('@sveltejs/kit).LoadOptions} options
+	 * @returns {import('@sveltejs/kit').Loaded}
+	 */
+	 
+	export async function load({ page, fetch, session, context }) {
+		const url = "/drugs.json"; 
+		let res = await fetch(url);
+		
+		if (res.ok) {	 
+			const data = await res.json()
+			return {
+				props: {
+					drugs: data
+				}
+			};
+		} 
+		
+		return {
+			status: res.status,
+			error: new Error(`Could not load ${url}`)
+		};
+	} 
+</script>
 
+<script lang="ts">
+	export let drugs = [];
 </script>
 
 <main>
 	<h1>Hello world!</h1>
 
 	<p>Visit <a class="text-blue-600 underline" href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
+
+	<p>Der er {drugs.length} stoffer på listen.</p>
+	
+	<pre>{JSON.stringify(drugs)}</pre>
+
 </main>
 
-<style lang="scss">
+<style>
 	:root {
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
 			'Open Sans', 'Helvetica Neue', sans-serif;

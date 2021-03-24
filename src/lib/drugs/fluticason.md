@@ -1,7 +1,7 @@
 ---
 name: "fluticason"
 important: 1
-chapters:  
+chapters:
   - 29
 hasinfo: 1
 sorting: "fluticason"
@@ -15,6 +15,9 @@ Mere lipofilt og selektivt for GR end kortisol.
 
 Se glukokortikoider.
 
-Farmakokinetik: Peroal biotilg. < 1%. Efter inhalation: abs. over i lungekredsløb, c-max efter 30 min. Halveringstid 4-14 timer.
+Farmakokinetik: Peroal biotilg. < 1%. Efter inhalation: abs. over i
+lungekredsløb, c-max efter 30 min. Halveringstid 4-14 timer.
 
-Doosering: Doser ≥ 500 µg/døgn: svag terapeutisk gevinst; ≥ 1000 µg/døgn kun forbundet med øget forekomst af bivirkninger. Tilsvarende gælder for øvrige stoffer.
+Doosering: Doser ≥ 500 µg/døgn: svag terapeutisk gevinst; ≥ 1000 µg/døgn kun
+forbundet med øget forekomst af bivirkninger. Tilsvarende gælder for øvrige
+stoffer.

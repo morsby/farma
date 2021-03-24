@@ -1,7 +1,7 @@
 ---
 name: "etinylestradiol"
 important: 0
-chapters:  
+chapters:
   - 36
 hasinfo: 1
 sorting: "etinylestradiol"
@@ -13,4 +13,4 @@ Artificielt østrogen. Ekstremt potent. Det mest benyttede i p-piller.
 
 Se østrogen.
 
-Farmakokinetik: Let abs. uden metabolisering (i samme grad som de naturlige). 
+Farmakokinetik: Let abs. uden metabolisering (i samme grad som de naturlige).

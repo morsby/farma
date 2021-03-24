@@ -1,8 +1,8 @@
 ---
 name: "ibuprofen"
 important: 1
-chapters:  
-  - 40 
+chapters:
+  - 40
   - 50
 hasinfo: 1
 sorting: "ibuprofen"

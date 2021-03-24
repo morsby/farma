@@ -1,7 +1,7 @@
 ---
 name: "acetylkolin"
 important: 1
-chapters:  
+chapters:
   - 6
 hasinfo: 1
 sorting: "acetylkolin"

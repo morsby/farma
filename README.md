@@ -1,6 +1,7 @@
 # create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+Everything you need to build a Svelte project, powered by
+[`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
 
 ## Creating a project
 
@@ -18,7 +19,8 @@ npm init svelte@next my-app
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've created a project and installed dependencies with `npm install` (or
+`pnpm install` or `yarn`), start a development server:
 
 ```bash
 npm run dev
@@ -29,9 +31,15 @@ npm run dev -- --open
 
 ## Building
 
-Svelte apps are built with _adapters_, which optimise your project for deployment to different environments.
+Svelte apps are built with _adapters_, which optimise your project for
+deployment to different environments.
 
-By default, `npm run build` will generate a Node app that you can run with `node build`. To use a different adapter, add it to the `devDependencies` in `package.json` making sure to specify the version as `next` and update your `svelte.config.cjs` to [specify your chosen adapter](https://kit.svelte.dev/docs#configuration-adapter). The following official adapters are available:
+By default, `npm run build` will generate a Node app that you can run with
+`node build`. To use a different adapter, add it to the `devDependencies` in
+`package.json` making sure to specify the version as `next` and update your
+`svelte.config.cjs` to
+[specify your chosen adapter](https://kit.svelte.dev/docs#configuration-adapter).
+The following official adapters are available:
 
 - [@sveltejs/adapter-node](https://github.com/sveltejs/kit/tree/master/packages/adapter-node)
 - [@sveltejs/adapter-static](https://github.com/sveltejs/kit/tree/master/packages/adapter-static)

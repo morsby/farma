@@ -1,7 +1,7 @@
 ---
 name: "kaliumklorid"
 important: 1
-chapters:  
+chapters:
   - 22
 hasinfo: 1
 sorting: "kaliumklorid"

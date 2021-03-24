@@ -1,7 +1,7 @@
 ---
 name: "østradiol"
 important: 0
-chapters:  
+chapters:
   - 36
 hasinfo: 1
 sorting: "østradiol"

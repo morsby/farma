@@ -1,7 +1,7 @@
 ---
 name: "norgestimat"
 important: 0
-chapters:  
+chapters:
   - 36
 hasinfo: 1
 sorting: "norgestimat"
@@ -11,6 +11,6 @@ date: "2016-06-05"
 
 Gestagen. Gonan.
 
-Er 2. generation. 
+Er 2. generation.
 
 Se progesteron.

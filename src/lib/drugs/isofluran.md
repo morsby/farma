@@ -1,7 +1,7 @@
 ---
 name: "isofluran"
 important: 0
-chapters:  
+chapters:
   - 42
 hasinfo: 1
 sorting: "isofluran"

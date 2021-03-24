@@ -1,7 +1,7 @@
 ---
 name: "gestoden"
 important: 0
-chapters:  
+chapters:
   - 36
 hasinfo: 1
 sorting: "gestoden"
@@ -9,7 +9,7 @@ slug: gestoden
 date: "2016-06-05"
 ---
 
-Gestagen. Gonan. 
+Gestagen. Gonan.
 
 Er 3. generation.
 

@@ -1,7 +1,7 @@
 ---
 name: "beklometason"
 important: 0
-chapters:  
+chapters:
   - 29
 hasinfo: 1
 sorting: "beklometason"
@@ -15,4 +15,6 @@ Mere lipofilt og selektivt for GR end kortisol.
 
 Se glukokortikoider.
 
-Doosering: Doser ≥ 1000 µg/døgn: svag terapeutisk gevinst; ≥ 2000 µg/døgn kun forbundet med øget forekomst af bivirkninger. Tilsvarende gælder for øvrige stoffer.
+Doosering: Doser ≥ 1000 µg/døgn: svag terapeutisk gevinst; ≥ 2000 µg/døgn kun
+forbundet med øget forekomst af bivirkninger. Tilsvarende gælder for øvrige
+stoffer.

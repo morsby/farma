@@ -1,7 +1,7 @@
 ---
 name: "vitamin D"
 important: 1
-chapters:  
+chapters:
   - 33
 hasinfo: 1
 sorting: "vitamin d"

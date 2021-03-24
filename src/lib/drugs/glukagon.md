@@ -1,7 +1,7 @@
 ---
 name: "glukagon"
 important: 1
-chapters:  
+chapters:
   - 34
 hasinfo: 1
 sorting: "glukagon"

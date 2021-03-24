@@ -1,7 +1,7 @@
 ---
 name: "alphacalcidol"
 important: 0
-chapters:  
+chapters:
   - 33
 hasinfo: 1
 sorting: "alphacalcidol"

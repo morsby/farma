@@ -1,7 +1,7 @@
 ---
 name: "ropivakain"
 important: 0
-chapters:  
+chapters:
   - 43
 hasinfo: 1
 sorting: "ropivakain"
@@ -13,7 +13,8 @@ Lokalanalgetikum (amidgruppen).
 
 Gives kun som S(-)-form.
 
-Udviklet fra bupivakain for at undgå kardiotoksicitet og mindsker CNS-påvirkning.
+Udviklet fra bupivakain for at undgå kardiotoksicitet og mindsker
+CNS-påvirkning.
 
 Har egen vasokonstriktorisk effekt.
 

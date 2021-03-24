@@ -1,7 +1,7 @@
 ---
 name: "methylen-dioxy-meth-amfetamin (ecstasy) (forgiftning)"
 important: 0
-chapters:  
+chapters:
   - NULL
 hasinfo: 1
 sorting: "methylen-dioxy-meth-amfetamin (ecstasy) (forgiftning)"

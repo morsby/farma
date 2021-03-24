@@ -1,7 +1,7 @@
 ---
 name: "kolestipol"
 important: 0
-chapters:  
+chapters:
   - 21
 hasinfo: 1
 sorting: "kolestipol"

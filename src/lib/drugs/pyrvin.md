@@ -1,7 +1,7 @@
 ---
 name: "pyrvin"
 important: 1
-chapters:  
+chapters:
   - 57
 hasinfo: 1
 sorting: "pyrvin"
@@ -18,5 +18,3 @@ Kinetik: Absorberes ikke.
 Dosering: 2 gange med 2 ugers mellemrum.
 
 Bivirkninger: Standard (kvalme, opkast, mavesmerter, diaré) + rød fæces
-
-

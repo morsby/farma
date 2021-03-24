@@ -1,7 +1,7 @@
 ---
 name: "oxazepam"
 important: 0
-chapters:  
+chapters:
   - 46
 hasinfo: 1
 sorting: "oxazepam"
@@ -11,6 +11,7 @@ date: "2016-06-05"
 
 Benzodiazepin. Intermediær virkningstid.
 
-Farmakokinetik: Indeholder hydroxylgruppe => direkte konjugering til glukoronider (inaktiv metabolit). Halveringstid 5-25 timer.
+Farmakokinetik: Indeholder hydroxylgruppe => direkte konjugering til
+glukoronider (inaktiv metabolit). Halveringstid 5-25 timer.
 
 Se diazepam.

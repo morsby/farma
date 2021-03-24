@@ -1,7 +1,7 @@
 ---
 name: "metamfetamin (forgiftning)"
 important: 0
-chapters:  
+chapters:
   - NULL
 hasinfo: 1
 sorting: "metamfetamin (forgiftning)"
