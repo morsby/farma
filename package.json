@@ -27,6 +27,7 @@
     "node": ">= 12.17.0"
   },
   "dependencies": {
-    "gray-matter": "^4.0.2"
+    "gray-matter": "^4.0.2",
+    "module": "^1.1.0"
   }
 }

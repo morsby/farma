@@ -1,4 +1,6 @@
 <script context="module" lang="ts">
+export const prerender = true;
+
 	/**
 	 * @param {import('@sveltejs/kit).LoadOptions} options
 	 * @returns {import('@sveltejs/kit').Loaded}

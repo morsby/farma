@@ -1,7 +1,5 @@
 import { promises as fs } from "fs";
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const matter = require("gray-matter");
+import matter from "gray-matter";
 export interface Drug {
   name: string;
   important: 0 | 1;
@@ -21,10 +19,7 @@ export async function get(request, context) {
   const dir = await fs.readdir(`src/lib/drugs`);
   const drugs = await Promise.all(
     dir.map(async (file) => {
-      const content = await fs.readFile(`src/lib/drugs/${file}`, {
-        encoding: "utf-8",
-      });
-      const md = matter(content);
+      const md = matter.read(`src/lib/drugs/${file}`);
       return {
         ...md.data,
         body: md.content,
