@@ -7,7 +7,7 @@
     "start": "svelte-kit start"
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "next",
+    "@sveltejs/adapter-netlify": "next",
     "@sveltejs/kit": "next",
     "@tailwindcss/jit": "^0.1.1",
     "autoprefixer": "^10.2.5",
