@@ -29,7 +29,7 @@ div#overlay {
 	</Sidebar>
 
     <div id="overlay" class:sidebar-open={sidebarOpen} on:click={toggleSidebar}></div>
-	<Main>
+	<Main {toggleSidebar}>
 		<slot />
 	</Main>
 </div>

@@ -1,5 +1,5 @@
 <script>
-    export let toggleSidebar;
+    export let toggleSidebar = () => {};
 </script>
 
 <style>
