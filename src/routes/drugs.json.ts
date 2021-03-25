@@ -9,6 +9,12 @@ export interface Drug {
   sorting: string;
   slug: string;
   date: string;
+  body: string;
+}
+
+export interface Response {
+  length: number;
+  data: Drug[];
 }
 
 /**

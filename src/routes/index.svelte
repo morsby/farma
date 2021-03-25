@@ -27,7 +27,8 @@ export const prerender = true;
 </script>
 
 <script lang="ts">
-	export let drugs = [];
+	import type {Response} from './drugs.json'
+	export let drugs: Response = {length:0, data:[]};
 </script>
 
 <main>
