@@ -18,7 +18,7 @@
    }
 
    nav#sidebar-nav {
-    @apply flex flex-col mt-10 px-4;
+    @apply flex flex-col mt-10 p-0;
    }
 </style>
 

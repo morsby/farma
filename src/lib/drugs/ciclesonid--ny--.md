@@ -21,5 +21,5 @@ Proteinbinding 98-99%.
 
 <hr>
 
-<a href=\http://pro.medicin.dk/Medicin/Praeparater/6816\ target=\_blank\>ProMedicin</a>:
+<a href="http://pro.medicin.dk/Medicin/Praeparater/6816" target="_blank">ProMedicin</a>:
 Syntetisk glukokortikoid beregnet til lokal behandling i luftvejene.

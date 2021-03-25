@@ -29,7 +29,7 @@ kontraindiceret)
 
 Kap 27.
 
-<a href=\http://pro.medicin.dk/Laegemiddelgrupper/Grupper/317880\ target=\_blank\>ProMedicin</a>:
+<a href="http://pro.medicin.dk/Laegemiddelgrupper/Grupper/317880" target="_blank">ProMedicin</a>:
 Rivaroxaban er en selektiv, direkte faktor Xa-hæmmer med oral biotilgængelighed.
 Rivaroxaban hæmmer dannelsen af trombin og tromber, men har ingen direkte
 virkning på trombin eller trombocytter.

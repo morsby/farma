@@ -19,7 +19,7 @@ CYP2C19-polymorfier)
 
 <hr>
 
-<a href=\http://pro.medicin.dk/Medicin/Praeparater/6017\ target=\_blank\>ProMedicin</a>:
+<a href="http://pro.medicin.dk/Medicin/Praeparater/6017" target="_blank">ProMedicin</a>:
 Middel til tromboseprofylakse. I komb. med ASA. Ticagrelor er en selektiv
 adenosindifosfat (ADP)-receptorantagonist, som virker på P2Y12 ADP-receptoren,
 og derved hæmmer ADP-medieret trombocytaktivering og -aggregation.

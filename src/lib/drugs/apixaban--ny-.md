@@ -26,7 +26,7 @@ kontraindiceret)
 
 <hr>
 
-<a href=\http://pro.medicin.dk/Laegemiddelgrupper/grupper/318286\ target=\_blank\>ProMedicin</a>:
+<a href="http://pro.medicin.dk/Laegemiddelgrupper/grupper/318286" target="_blank">ProMedicin</a>:
 Apixaban er en oral, selektiv, reversibel, direkte faktor Xa-hæmmer. Apixaban
 hæmmer dannelsen af trombin og tromber, men har ingen direkte virkning på
 trombin eller trombocytter.

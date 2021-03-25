@@ -58,7 +58,7 @@ nedsat placentaperfusion. Evt. passage til modermælk er ubetydelig. Bupivakain:
 Kardiotoksicitet øget hos gravide.
 
 Bivirkninger: Kan være af mekanisk/teknisk karakter eller en uhensigtsmæssig men
-forventet farmakologisk effekt:<ol><li value=\1\>Lokale: Vævsskader sv.t.
+forventet farmakologisk effekt:<ol><li value="1">Lokale: Vævsskader sv.t.
 applikationssted - hæmatom, infektino, nerveskader</li><li>Regionale: fx udtalt
 motorisk blokade, hypoventiliation</li><li>Utilsigtet intravaskulær/intraspinal
 injektion</li><li>Systemiske bivirkninger: virkning af abs. (venøs) i systemisk
@@ -69,7 +69,7 @@ højere doser: kramper, bevidstløshed, respirationsstop, kredsløbskollaps
 Afh. af plasmakonc og andet (administrationshastighed).
 
 Først ses CNS-bivirkning, herefter BT-fald og
-respirationsstop.</li><li style=\list-style:none\>Generelt ses proportionalitet
+respirationsstop.</li><li style="list-style:none">Generelt ses proportionalitet
 mellem potens og bivirkninger. Bupivakain synes at være relativt mere
 kardiotoksisk end lidokain (øges yderligere ved acidose og hypoksi). Ropivakin
 har mindre systemisk toksicitet end bupivakain.

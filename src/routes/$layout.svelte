@@ -1,11 +1,14 @@
-<script>
+<script lang="ts">
     let sidebarOpen = false;
     const toggleSidebar = () => sidebarOpen = !sidebarOpen
 
 	import "../global.css";
 	import Sidebar from '$lib/components/Sidebar.svelte'
 	import Main from '$lib/components/Main.svelte'
-</script>
+	import Nav from '$lib/components/Nav.svelte'
+
+	import {drugs} from '$lib/stores/drugs' 
+	</script>
  
 <style>
 div#wrapper {
@@ -25,7 +28,7 @@ div#overlay {
 
 <div id="wrapper">
 	<Sidebar sidebarOpen={sidebarOpen}>
-		HER ER TEKSTEN
+		<Nav items={$drugs} />
 	</Sidebar>
 
     <div id="overlay" class:sidebar-open={sidebarOpen} on:click={toggleSidebar}></div>

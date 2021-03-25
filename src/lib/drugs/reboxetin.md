@@ -26,12 +26,11 @@ fase</li><li>Vedligeholdsesbehandling: Fortsæt akut beh. i 6-12 mdr. - for
 tidligt stop => tilbagefald af aktuel depression 50% (livstidrecidivrisiko er
 50% - stiger med antal og alder).</li><li>Forebyggende: Benyt lægemiddel, pt.
 har responderet på tidl. Samme dosering som akut. Evt.
-livslangt.</li><li style=\list-style-type:disc\>Langsom aftraping, fx over 4
-uger pga. ophørssyndrom, særligt for SSRI og venlafaxin - pga. kompensatorisk
-nedreg. af receptorer: svimmelhed, kvalme, hovedpine, angst, irritabilitet,
-nedsat stemningsleje, søvnforstyrrelser, influenzalign. symp. Varer sjældent
-mere end 1 uge, ophører oftest inden for 3. Hyppigst ved korte
-halveringstider.</li></ol>
+livslangt.</li><li>Langsom aftraping, fx over 4 uger pga. ophørssyndrom, særligt
+for SSRI og venlafaxin - pga. kompensatorisk nedreg. af receptorer: svimmelhed,
+kvalme, hovedpine, angst, irritabilitet, nedsat stemningsleje,
+søvnforstyrrelser, influenzalign. symp. Varer sjældent mere end 1 uge, ophører
+oftest inden for 3. Hyppigst ved korte halveringstider.</li></ol>
 
 Farmakokinetik: Halveringstid 13 timer.
 
