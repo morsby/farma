@@ -37,8 +37,12 @@ export const prerender = true;
 
 	<p>Der er {drugs.length} stoffer på listen.</p>
 	
-	<pre>{JSON.stringify(drugs)}</pre>
-
+	{#each drugs.data as drug (drug.name)}
+	<ul>
+		<li>{drug.name}</li>
+		<li>{@html drug.body}</li>
+	</ul>
+	{/each}
 </main>
 
 <style>

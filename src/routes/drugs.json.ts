@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import matter from "gray-matter";
+import marked from "marked";
 export interface Drug {
   name: string;
   important: 0 | 1;
@@ -19,10 +20,11 @@ export async function get(request, context) {
   const dir = await fs.readdir(`src/lib/drugs`);
   const drugs = await Promise.all(
     dir.map(async (file) => {
-      const md = matter.read(`src/lib/drugs/${file}`);
+      const content = await fs.readFile(`src/lib/drugs/${file}`);
+      const md = matter(content);
       return {
         ...md.data,
-        body: md.content,
+        body: marked(md.content),
       };
     })
   );

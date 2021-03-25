@@ -12,6 +12,7 @@
     "@tailwindcss/jit": "^0.1.1",
     "autoprefixer": "^10.2.5",
     "cssnano": "^4.1.10",
+    "marked": "^2.0.1",
     "postcss": "^8.2.7",
     "postcss-load-config": "^3.0.1",
     "sass": "^1.0.0",
@@ -27,7 +28,6 @@
     "node": ">= 12.17.0"
   },
   "dependencies": {
-    "gray-matter": "^4.0.2",
-    "module": "^1.1.0"
+    "gray-matter": "^4.0.2"
   }
 }
