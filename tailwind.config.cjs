@@ -19,7 +19,9 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ["border"],
+    },
   },
   plugins: [],
 };

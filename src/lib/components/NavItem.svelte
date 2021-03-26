@@ -1,22 +1,41 @@
 <script lang="ts">
-import type { Drug } from "$lib/data";
+  import type { Drug } from "$lib/data";
 
-import {drugs} from '$lib/stores/drugs'
+  import { drugs } from "$lib/stores/drugs";
 
-export let item:Drug
+  export let item: Drug;
+
+  const handleOpen = () => {
+    if (!item.body) return;
+    drugs.toggle(item.name);
+  };
 </script>
 
-<style>
-    li {
-        @apply p-3 transition duration-300
-    }
-
-    li:hover {
-        @apply bg-gray-100;
-        cursor:pointer;
-    }
-</style>
-
-<li class:font-bold={item.important === 1} on:click={() => drugs.toggle(item.name)}>
-    {item.name} {#if item.open}+{/if}
+<li class:font-bold={item.important}>
+  <a href="#{item.slug}" class:noInfo={!item.body} on:click={handleOpen}
+    >{item.name}</a
+  >
 </li>
+
+<style>
+  li {
+    @apply transition duration-300 p-0;
+  }
+
+  li:hover {
+    @apply bg-gray-100;
+  }
+
+  a {
+    @apply p-3;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  a.noInfo {
+    cursor: default;
+    @apply text-gray-400;
+  }
+</style>

@@ -1,0 +1,50 @@
+<script lang="ts">
+  import type { Drug } from "$lib/data";
+  import { drugs } from "$lib/stores/drugs";
+  export let drug: Drug;
+  const handleClose = () => drugs.toggle(drug.name);
+  const handleMinimize = () => (hidden = !hidden);
+  let hidden = false;
+</script>
+
+<article id={drug.slug}>
+  <h2 class:important={drug.important}>{drug.name}</h2>
+  <section class:hidden>
+    <ul>
+      {#each drug.chapters as chap}
+        <li>{chap ? "Kap. " + chap : "Intet kapitel"}</li>
+      {/each}
+    </ul>
+
+    <div>
+      {@html drug.body}
+    </div>
+  </section>
+
+  <footer>
+    <button on:click={handleClose}>Luk</button>
+    <button on:click={handleMinimize}>Minimer</button>
+  </footer>
+</article>
+
+<style>
+  article {
+    @apply bg-white my-6 p-6 rounded-lg shadow-lg;
+  }
+
+  h2 {
+    @apply text-xl mb-2;
+  }
+
+  h2.important {
+    @apply font-bold;
+  }
+  ul {
+    @apply mb-2;
+  }
+  li {
+    display: inline-block;
+    @apply py-1 px-3 mx-1 bg-red-400 rounded;
+    @apply text-sm text-white;
+  }
+</style>
