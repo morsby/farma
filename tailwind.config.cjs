@@ -16,7 +16,7 @@ module.exports = {
     },
   },
   theme: {
-    extend: {},
+    extend: { outline: { red: "2px solid #fc8181" } },
   },
   variants: {
     extend: {

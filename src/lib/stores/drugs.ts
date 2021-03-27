@@ -28,3 +28,4 @@ function createDrugs() {
 }
 
 export const drugs = createDrugs();
+export const filter = writable("");

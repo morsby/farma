@@ -1,15 +1,18 @@
 <script lang="ts">
   import type { Drug } from "$lib/data";
-
   import NavItem from "./NavItem.svelte";
+  import Filter from "./Filter.svelte";
   export let items: Drug[] = [];
 </script>
 
-<ul>
-  {#each items as item}
-    <NavItem {item} />
-  {/each}
-</ul>
+<div>
+  <Filter />
+  <ul>
+    {#each items as item}
+      <NavItem {item} />
+    {/each}
+  </ul>
+</div>
 
 <style>
   ul {

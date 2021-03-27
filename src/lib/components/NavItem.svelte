@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Drug } from "$lib/data";
   import { scrollTo } from "$lib/utils";
-  import { drugs } from "$lib/stores/drugs";
+  import { drugs, filter } from "$lib/stores/drugs";
 
   export let item: Drug;
 
@@ -21,11 +21,13 @@
   };
 </script>
 
-<li class:font-bold={item.important} class:open={item.open}>
-  <a href="#{item.slug}" class:noInfo={!item.body} on:click={handleOpen}
-    >{item.name}</a
-  >
-</li>
+{#if item.name.includes($filter)}
+  <li class:font-bold={item.important} class:open={item.open}>
+    <a href="#{item.slug}" class:noInfo={!item.body} on:click={handleOpen}
+      >{item.name}</a
+    >
+  </li>
+{/if}
 
 <style>
   li {
