@@ -36,7 +36,7 @@
 
 <style>
   div {
-    @apply w-60 hidden sm:block py-6 px-3 bg-white;
+    @apply w-60 hidden sm:block py-6 px-3 bg-white  shadow-lg overflow-y-auto;
   }
   h3 {
     @apply font-bold;

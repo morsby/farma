@@ -13,14 +13,15 @@
     e.preventDefault();
     if (open) return;
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const top = document.getElementById(slug).offsetTop;
       scrollTo(top);
-    }, 250);
+      setTimeout(() => scrollTo(top), 200);
+    });
   };
 </script>
 
-<li class:font-bold={item.important}>
+<li class:font-bold={item.important} class:open={item.open}>
   <a href="#{item.slug}" class:noInfo={!item.body} on:click={handleOpen}
     >{item.name}</a
   >
@@ -29,6 +30,10 @@
 <style>
   li {
     @apply transition duration-300 p-0;
+  }
+
+  li.open {
+    @apply text-red-400;
   }
 
   li:hover {

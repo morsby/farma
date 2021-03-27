@@ -13,6 +13,7 @@
   div#sidebar {
     @apply fixed z-30 inset-y-0 left-0 w-60 transition duration-300 transform bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0;
     @apply -translate-x-full ease-in;
+    @apply shadow-lg;
   }
 
   div#sidebar.sidebar-open {
