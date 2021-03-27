@@ -1,7 +1,14 @@
 <script lang="ts">
   import { drugs } from "$lib/stores/drugs";
+  import { scrollTo } from "$lib/utils";
 
-  const handleClose = (name) => drugs.toggle(name);
+  const handleClick = (slug) => {
+    const top = document.getElementById(slug).offsetTop;
+    scrollTo(top);
+  };
+  const handleClose = (name) => {
+    drugs.toggle(name);
+  };
 </script>
 
 <div>
@@ -11,7 +18,13 @@
     {#each $drugs as drug (drug.name)}
       {#if drug.open}
         <li class:important={drug.important}>
-          <a href={`#${drug.slug}`}>
+          <a
+            href={`#${drug.slug}`}
+            on:click={(e) => {
+              e.preventDefault();
+              handleClick(drug.slug);
+            }}
+          >
             {drug.name}
           </a>
           <button on:click={() => handleClose(drug.name)}>&#x2715</button>

@@ -1,29 +1,34 @@
 <script lang="ts">
+  import { slide } from "svelte/transition";
+
   import type { Drug } from "$lib/data";
   import { drugs } from "$lib/stores/drugs";
   export let drug: Drug;
   const handleClose = () => drugs.toggle(drug.name);
-  const handleMinimize = () => (hidden = !hidden);
-  let hidden = false;
+
+  let visible = true;
+  const handleMinimize = () => (visible = !visible);
 </script>
 
-<article id={drug.slug}>
+<article id={drug.slug} transition:slide>
   <h2 class:important={drug.important}>{drug.name}</h2>
-  <section class:hidden>
-    <ul>
-      {#each drug.chapters as chap}
-        <li>{chap ? "Kap. " + chap : "Intet kapitel"}</li>
-      {/each}
-    </ul>
+  {#if visible}
+    <section transition:slide|local>
+      <ul>
+        {#each drug.chapters as chap}
+          <li>{chap ? "Kap. " + chap : "Intet kapitel"}</li>
+        {/each}
+      </ul>
 
-    <div>
-      {@html drug.body}
-    </div>
-  </section>
+      <div>
+        {@html drug.body}
+      </div>
+    </section>
+  {/if}
 
   <footer>
-    <button on:click={handleClose}>Luk</button>
-    <button on:click={handleMinimize}>Minimer</button>
+    <button on:click={handleClose}>Luk &#x2715</button>
+    <button on:click={handleMinimize}>{visible ? "Skjul –" : "Vis +"}</button>
   </footer>
 </article>
 
@@ -44,7 +49,12 @@
   }
   li {
     display: inline-block;
-    @apply py-1 px-3 mx-1 bg-red-400 rounded;
+    @apply py-1 px-3 mr-1 bg-red-400 rounded-xl;
+    @apply text-sm text-white;
+  }
+
+  button {
+    @apply bg-red-400 rounded-xl py-1 px-2;
     @apply text-sm text-white;
   }
 </style>

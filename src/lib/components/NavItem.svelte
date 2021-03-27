@@ -1,13 +1,22 @@
 <script lang="ts">
   import type { Drug } from "$lib/data";
-
+  import { scrollTo } from "$lib/utils";
   import { drugs } from "$lib/stores/drugs";
 
   export let item: Drug;
 
-  const handleOpen = () => {
+  const handleOpen = (e) => {
     if (!item.body) return;
+    const { open, slug } = item;
     drugs.toggle(item.name);
+
+    e.preventDefault();
+    if (open) return;
+
+    setTimeout(() => {
+      const top = document.getElementById(slug).offsetTop;
+      scrollTo(top);
+    }, 250);
   };
 </script>
 
