@@ -11,6 +11,10 @@
   import { drugs } from "$lib/stores/drugs";
 </script>
 
+<svelte:head>
+  <title>farma.morsby.dk</title>
+</svelte:head>
+
 <div id="wrapper">
   <Sidebar {sidebarOpen}>
     <Nav items={$drugs} />

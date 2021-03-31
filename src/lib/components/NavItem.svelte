@@ -9,7 +9,6 @@
   export let item: Drug;
 
   const handleOpen = (e) => {
-    if (!item.body) return;
     const { open, slug } = item;
     drugs.toggle(item.name);
 
@@ -31,7 +30,7 @@
 
 {#if item.name.includes($filter)}
   <li class:font-bold={item.important} class:open={item.open}>
-    <a href="#{item.slug}" class:noInfo={!item.body} on:click={handleOpen}>
+    <a href="#{item.slug}" on:click={handleOpen}>
       {item.name}
     </a>
     <div class="fill" />
@@ -66,10 +65,6 @@
     @apply p-1 m-0 mr-4 flex;
     display: blocK;
     height: 100%;
-  }
-  a.noInfo {
-    cursor: default;
-    @apply text-gray-400;
   }
 
   .fill {

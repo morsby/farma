@@ -3,6 +3,7 @@
 
   import type { Drug } from "$lib/data";
   import { drugs } from "$lib/stores/drugs";
+  import NavItem from "./NavItem.svelte";
   export let drug: Drug;
   const handleClose = () => drugs.toggle(drug.name);
 
@@ -21,7 +22,15 @@
       </ul>
 
       <div>
-        {@html drug.body}
+        {#if drug.body}
+          {@html drug.body}
+        {:else}
+          <p>
+            <strong>
+              Der er desværre ingen oplysninger... Vil du skrive nogle noter?
+            </strong>
+          </p>
+        {/if}
       </div>
     </section>
   {/if}
@@ -56,5 +65,9 @@
   button {
     @apply bg-red-400 rounded-xl py-1 px-2;
     @apply text-sm text-white;
+  }
+
+  article :global(a) {
+    @apply text-red-400;
   }
 </style>

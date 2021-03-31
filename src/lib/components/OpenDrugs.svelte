@@ -2,6 +2,9 @@
   import { drugs } from "$lib/stores/drugs";
   import { scrollTo } from "$lib/utils";
 
+  import CloseFilled20 from "carbon-icons-svelte/lib/CloseFilled20";
+  import Close20 from "carbon-icons-svelte/lib/Close20";
+  import Drug from "./Drug.svelte";
   const handleClick = (slug) => {
     const top = document.getElementById(slug).offsetTop;
     scrollTo(top);
@@ -9,10 +12,25 @@
   const handleClose = (name) => {
     drugs.toggle(name);
   };
+  const handleCloseAll = () => {
+    open.forEach((d) => drugs.toggle(d.name));
+  };
+
+  $: open = $drugs.filter((d) => d.open === true);
+  $: anyOpen = open.length > 0;
 </script>
 
-<div>
-  <h3>Åbne stoffer</h3>
+<div class="wrapper">
+  <div class="header">
+    <h3>Åbne stoffer</h3>
+    {#if anyOpen}
+      <div>
+        <button title="Luk alle" on:click={handleCloseAll}
+          ><CloseFilled20 /></button
+        >
+      </div>
+    {/if}
+  </div>
 
   <ul>
     {#each $drugs as drug (drug.name)}
@@ -27,7 +45,7 @@
           >
             {drug.name}
           </a>
-          <button on:click={() => handleClose(drug.name)}>&#x2715</button>
+          <button on:click={() => handleClose(drug.name)}><Close20 /></button>
         </li>
       {/if}
     {/each}
@@ -35,11 +53,22 @@
 </div>
 
 <style>
-  div {
+  div.wrapper {
     @apply w-60 hidden sm:block py-6 px-3 bg-white  shadow-lg overflow-y-auto;
   }
+
+  div.header {
+    @apply flex pr-2;
+  }
   h3 {
-    @apply font-bold;
+    @apply font-bold flex-1;
+  }
+
+  button {
+    @apply transition duration-300;
+  }
+  .header button:hover {
+    @apply text-red-400;
   }
 
   li {
