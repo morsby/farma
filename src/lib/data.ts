@@ -8,6 +8,7 @@ export interface Drug {
   date: string;
   body: string;
   open?: boolean;
+  favourite?: boolean;
 }
 
 export interface Response {

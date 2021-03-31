@@ -29,6 +29,7 @@
     "node": ">= 12.17.0"
   },
   "dependencies": {
+    "carbon-icons-svelte": "^10.28.0",
     "gray-matter": "^4.0.2"
   }
 }
