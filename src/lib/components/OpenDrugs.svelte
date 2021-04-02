@@ -4,7 +4,7 @@
 
   import CloseFilled20 from "carbon-icons-svelte/lib/CloseFilled20";
   import Close20 from "carbon-icons-svelte/lib/Close20";
-  import Drug from "./Drug.svelte";
+
   const handleClick = (slug) => {
     const top = document.getElementById(slug).offsetTop;
     scrollTo(top);

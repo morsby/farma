@@ -1,5 +1,13 @@
 <script>
+  import CloseFilled20 from "carbon-icons-svelte/lib/CloseFilled20";
   export let toggleSidebar = () => {};
+  import { drugs } from "$lib/stores/drugs";
+  const handleCloseAll = () => {
+    open.forEach((d) => drugs.toggle(d.name));
+  };
+
+  $: open = $drugs.filter((d) => d.open === true);
+  $: anyOpen = open.length > 0;
 </script>
 
 <div id="main-wrapper">
@@ -16,6 +24,14 @@
           />
         </svg>
       </button>
+      <h1>farma.morsby.dk</h1>
+      {#if anyOpen}
+        <div class="closeAll">
+          <button title="Luk alle" on:click={handleCloseAll}
+            ><CloseFilled20 /></button
+          >
+        </div>
+      {/if}
     </div>
   </header>
 
@@ -36,7 +52,7 @@
   }
 
   #header-top {
-    @apply flex items-center space-x-4 lg:space-x-0;
+    @apply flex items-center space-x-4 w-full lg:space-x-0;
   }
 
   #sidebar-toggle {
@@ -48,7 +64,11 @@
   }
 
   h1 {
-    @apply text-2xl font-medium text-gray-800;
+    @apply text-2xl font-medium text-gray-800 flex-1;
+  }
+
+  .closeAll button {
+    @apply text-red-400;
   }
 
   main {
