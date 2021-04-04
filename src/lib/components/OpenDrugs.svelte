@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { drugs } from "$lib/stores/drugs";
+  import { data, getDrugs } from "$lib/stores/data";
   import { scrollTo } from "$lib/utils";
 
   import CloseFilled20 from "carbon-icons-svelte/lib/CloseFilled20";
@@ -10,13 +10,13 @@
     scrollTo(top);
   };
   const handleClose = (name) => {
-    drugs.toggle(name);
+    data.toggle(name);
   };
   const handleCloseAll = () => {
-    open.forEach((d) => drugs.toggle(d.name));
+    open.forEach((d) => data.toggle(d));
   };
 
-  $: open = $drugs.filter((d) => d.open === true);
+  $: open = $data.ids.filter((id) => $data.data.drugs[id].open === true);
   $: anyOpen = open.length > 0;
 </script>
 
@@ -33,7 +33,7 @@
   </div>
 
   <ul>
-    {#each $drugs as drug (drug.name)}
+    {#each getDrugs($data.ids, $data) as drug (drug.name)}
       {#if drug.open}
         <li class:important={drug.important}>
           <a

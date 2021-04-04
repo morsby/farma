@@ -1,12 +1,12 @@
 <script>
   import CloseFilled20 from "carbon-icons-svelte/lib/CloseFilled20";
   export let toggleSidebar = () => {};
-  import { drugs } from "$lib/stores/drugs";
+  import { data } from "$lib/stores/data";
   const handleCloseAll = () => {
-    open.forEach((d) => drugs.toggle(d.name));
+    open.forEach((d) => data.toggle(d));
   };
 
-  $: open = $drugs.filter((d) => d.open === true);
+  $: open = $data.ids.filter((id) => $data.data.drugs[id].open === true);
   $: anyOpen = open.length > 0;
 </script>
 

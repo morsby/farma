@@ -1,17 +1,29 @@
 <script lang="ts">
-  import { getChapters, chapterFilter } from "$lib/stores/drugs";
+  import { data } from "$lib/stores/data";
 
-  const selectAll = () => chapterFilter.set(getChapters());
-  const selectNone = () => chapterFilter.set([]);
-  const select = (chap) => chapterFilter.update(chap);
-
-  $: console.log($chapterFilter);
+  const selectAll = () => data.filter("chapters", $data.chapters);
+  const selectNone = () => data.filter("chapters", []);
+  const handleClick = (chap: Number) => {
+    if ($data.filters.chapters.includes(chap)) {
+      data.filter(
+        "chapters",
+        $data.filters.chapters.filter((c) => c !== chap)
+      );
+    } else {
+      data.filter("chapters", [...$data.filters.chapters, chap]);
+    }
+  };
 </script>
 
 <form>
-  {#each getChapters() as chap}
+  {#each $data.chapters as chap (chap)}
     <div class:no-chapter={!chap}>
-      <input type="checkbox" bind:group={$chapterFilter} value={chap} />
+      <input
+        type="checkbox"
+        checked={$data.filters.chapters.includes(chap)}
+        on:click={() => handleClick(chap)}
+        value={chap}
+      />
       <span>{chap || "Intet kapitel"}</span>
     </div>
   {/each}

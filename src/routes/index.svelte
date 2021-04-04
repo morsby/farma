@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   export const prerender = true;
-  import { drugs } from "$lib/stores/drugs";
+  import { data as dataStore } from "$lib/stores/data";
   /**
    * @param {import('@sveltejs/kit).LoadOptions} options
    * @returns {import('@sveltejs/kit').Loaded}
@@ -12,7 +12,7 @@
 
     if (res.ok) {
       const data = await res.json();
-      drugs.fetched(data.data);
+      dataStore.fetched(data.data);
 
       return {};
     }
@@ -26,13 +26,17 @@
 
 <script lang="ts">
   import Drug from "$lib/components/Drug.svelte";
-  import { drugs as drugsStore } from "$lib/stores/drugs";
+  import { data } from "$lib/stores/data";
 </script>
 
 <section>
-  {#each $drugsStore as drug (drug.name)}
-    {#if drug.open}
-      <Drug {drug} />
-    {/if}
-  {/each}
+  {#await $data}
+    <p>Waiting</p>
+  {:then}
+    {#each $data.ids as id (id)}
+      {#if $data.data.drugs[id].open}
+        <Drug drug={$data.data.drugs[id]} />
+      {/if}
+    {/each}
+  {/await}
 </section>

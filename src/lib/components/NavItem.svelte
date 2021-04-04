@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { Drug } from "$lib/data";
   import { scrollTo } from "$lib/utils";
-  import { drugs, textFilter } from "$lib/stores/drugs";
+  import { data } from "$lib/stores/data";
 
-  import { fade } from "svelte/transition";
+  import { fade, slide } from "svelte/transition";
   import Star20 from "carbon-icons-svelte/lib/Star20";
   import StarFilled20 from "carbon-icons-svelte/lib/StarFilled20";
   export let item: Drug;
 
   const handleOpen = (e) => {
     const { open, slug } = item;
-    drugs.toggle(item.name);
+    data.toggle(item.name);
 
     e.preventDefault();
     if (open) return;
@@ -23,24 +23,25 @@
   };
 
   const handleFav = () => {
-    console.log("favving");
-    drugs.fav(item.name);
+    data.fav(item.name);
   };
 </script>
 
-{#if item.name.includes($textFilter)}
-  <li class:font-bold={item.important} class:open={item.open}>
+{#if item.name.includes($data.filters.name) && item.chapters.some((chap) =>
+    $data.filters.chapters.includes(chap)
+  )}
+  <li class:font-bold={item.important} class:open={item.open} transition:slide>
     <a href="#{item.slug}" on:click={handleOpen}>
       {item.name}
     </a>
     <div class="fill" />
     <div class="icon" on:click={handleFav}>
       {#if item.favourite}
-        <span transition:fade>
+        <span transition:fade|local>
           <StarFilled20 />
         </span>
       {:else}
-        <span transition:fade>
+        <span transition:fade|local>
           <Star20 />
         </span>
       {/if}

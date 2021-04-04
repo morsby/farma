@@ -1,4 +1,4 @@
-import { parseDrugs } from "$lib/data";
+import { parseDrugs } from "$lib/drugs";
 /**
  * @param {import('@sveltejs/kit').Request} request
  * @param {any} context

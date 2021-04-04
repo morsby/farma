@@ -1,11 +1,10 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
 
-  import type { Drug } from "$lib/data";
-  import { drugs } from "$lib/stores/drugs";
-  import NavItem from "./NavItem.svelte";
+  import type { Drug } from "$lib/drugs";
+  import { data } from "$lib/stores/data";
   export let drug: Drug;
-  const handleClose = () => drugs.toggle(drug.name);
+  const handleClose = () => data.toggle(drug.name);
 
   let visible = true;
   const handleMinimize = () => (visible = !visible);
