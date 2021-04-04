@@ -27,31 +27,37 @@
   };
 </script>
 
-{#if item.name.includes($data.filters.name) && item.chapters.some((chap) =>
-    $data.filters.chapters.includes(chap)
-  )}
-  <li class:font-bold={item.important} class:open={item.open} transition:slide>
-    <a href="#{item.slug}" on:click={handleOpen}>
-      {item.name}
-    </a>
-    <div class="fill" />
-    <div class="icon" on:click={handleFav}>
-      {#if item.favourite}
-        <span transition:fade|local>
-          <StarFilled20 />
-        </span>
-      {:else}
-        <span transition:fade|local>
-          <Star20 />
-        </span>
-      {/if}
-    </div>
-  </li>
-{/if}
+<li
+  class:font-bold={item.important}
+  class:open={item.open}
+  class:hidden={!item.name.includes($data.filters.name) ||
+    !item.chapters.some((chap) => $data.filters.chapters.includes(chap))}
+  transition:slide
+>
+  <a href="#{item.slug}" on:click={handleOpen}>
+    {item.name}
+  </a>
+  <div class="fill" />
+  <div class="icon" on:click={handleFav}>
+    {#if item.favourite}
+      <span transition:fade|local>
+        <StarFilled20 />
+      </span>
+    {:else}
+      <span transition:fade|local>
+        <Star20 />
+      </span>
+    {/if}
+  </div>
+</li>
 
 <style>
   li {
     @apply transition duration-300 p-2 flex w-full;
+  }
+
+  li.hidden {
+    display: none;
   }
 
   li.open {
