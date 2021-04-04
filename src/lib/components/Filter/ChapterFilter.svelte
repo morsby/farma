@@ -37,8 +37,12 @@
     @apply grid grid-cols-4 px-3;
   }
 
+  div {
+    order: 1;
+  }
   div.no-chapter {
     @apply col-span-4 mt-2;
+    order: 2;
   }
 
   input {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Drug } from "$lib/data";
+  import type { Drug } from "$lib/drugs";
   import { scrollTo } from "$lib/utils";
   import { data } from "$lib/stores/data";
 
