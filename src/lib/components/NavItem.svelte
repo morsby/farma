@@ -3,7 +3,7 @@
   import { scrollTo } from "$lib/utils";
   import { data } from "$lib/stores/data";
 
-  import { fade, slide } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import Star20 from "carbon-icons-svelte/lib/Star20";
   import StarFilled20 from "carbon-icons-svelte/lib/StarFilled20";
   export let item: Drug;
@@ -32,7 +32,6 @@
   class:open={item.open}
   class:hidden={!item.name.includes($data.filters.name) ||
     !item.chapters.some((chap) => $data.filters.chapters.includes(chap))}
-  transition:slide
 >
   <a href="#{item.slug}" on:click={handleOpen}>
     {item.name}

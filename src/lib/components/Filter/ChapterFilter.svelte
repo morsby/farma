@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { slide } from "svelte/transition";
   import { data } from "$lib/stores/data";
-
+  let open = false;
+  const toggle = () => (open = !open);
   const selectAll = () => data.filter("chapters", $data.chapters);
   const selectNone = () => data.filter("chapters", []);
   const handleClick = (chap: Number) => {
@@ -15,24 +17,39 @@
   };
 </script>
 
-<form>
-  {#each $data.chapters as chap (chap)}
-    <div class:no-chapter={!chap}>
-      <input
-        type="checkbox"
-        checked={$data.filters.chapters.includes(chap)}
-        on:click={() => handleClick(chap)}
-        value={chap}
-      />
-      <span>{chap || "Intet kapitel"}</span>
+<button class="toggle" on:click={toggle}>Filtrer efter kapitler</button>
+{#if open}
+  <div transition:slide>
+    <form>
+      {#each $data.chapters as chap (chap)}
+        <div class:no-chapter={!chap}>
+          <input
+            type="checkbox"
+            checked={$data.filters.chapters.includes(chap)}
+            on:click={() => handleClick(chap)}
+            value={chap}
+          />
+          <span>{chap || "Intet kapitel"}</span>
+        </div>
+      {/each}
+    </form>
+    <div class="buttons">
+      <button on:click={selectAll}>Vælg alle</button>
+      <button on:click={selectNone}>Fravælg alle</button>
     </div>
-  {/each}
-</form>
-
-<button on:click={selectAll}>Vælg alle</button>
-<button on:click={selectNone}>Fravælg alle</button>
+  </div>
+{/if}
 
 <style>
+  button {
+    @apply rounded bg-gray-100 hover:bg-gray-200 transition p-2;
+  }
+  div.buttons {
+    @apply m-2 flex justify-between;
+  }
+  .toggle {
+    @apply w-full py-3 my-2 rounded-none;
+  }
   form {
     @apply grid grid-cols-4 px-3;
   }
