@@ -16,7 +16,7 @@
   {#if visible}
     <section transition:slide|local>
       <ul>
-        {#each drug.chapters as chap}
+        {#each drug.chapters.sort((a, b) => a - b) as chap}
           <li>{chap ? "Kap. " + chap : "Intet kapitel"}</li>
         {/each}
       </ul>

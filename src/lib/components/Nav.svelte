@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Drug } from "$lib/data";
   import NavItem from "./NavItem.svelte";
-  import Filter from "./Filter.svelte";
+  import Filter from "./Filter/Filter.svelte";
   export let items: Drug[] = [];
 </script>
 

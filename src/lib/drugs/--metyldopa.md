@@ -2,8 +2,8 @@
 name: "α-metyldopa"
 important: 0
 chapters:
-  - 9
   - 23
+  - 9
 hasinfo: 1
 sorting: "α-metyldopa"
 slug: --metyldopa

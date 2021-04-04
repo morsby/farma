@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { filter } from "$lib/stores/drugs";
+  import { textFilter } from "$lib/stores/drugs";
 </script>
 
 <form>
@@ -13,10 +13,10 @@
         stroke-width="2"
         viewBox="0 0 24 24"
         class="w-6 h-6"
-        class:filter={$filter}
-        on:click={() => filter.set("")}
+        class:filter={$textFilter}
+        on:click={() => textFilter.set("")}
       >
-        {#if !$filter}
+        {#if !$textFilter}
           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         {:else}
           <path d="M0 0l21 21M21 0l-21 21M21" />
@@ -28,7 +28,7 @@
       name="q"
       placeholder="Filtrer"
       autocomplete="off"
-      bind:value={$filter}
+      bind:value={$textFilter}
     />
   </div>
 </form>

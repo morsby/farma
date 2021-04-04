@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Drug } from "$lib/data";
   import { scrollTo } from "$lib/utils";
-  import { drugs, filter } from "$lib/stores/drugs";
+  import { drugs, textFilter } from "$lib/stores/drugs";
 
   import { fade } from "svelte/transition";
   import Star20 from "carbon-icons-svelte/lib/Star20";
@@ -28,7 +28,7 @@
   };
 </script>
 
-{#if item.name.includes($filter)}
+{#if item.name.includes($textFilter)}
   <li class:font-bold={item.important} class:open={item.open}>
     <a href="#{item.slug}" on:click={handleOpen}>
       {item.name}

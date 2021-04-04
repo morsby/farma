@@ -11,6 +11,11 @@ export interface Drug {
   favourite?: boolean;
 }
 
+export interface Chapter {
+  value: number;
+  name?: string;
+}
+
 export interface Response {
   length: number;
   data: Drug[];
