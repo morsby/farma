@@ -29,7 +29,7 @@
     <input
       type="search"
       name="q"
-      placeholder="Filtrer"
+      placeholder="Filtrer efter navn"
       autocomplete="off"
       value={$data.filters.name}
       on:input={handleChange}

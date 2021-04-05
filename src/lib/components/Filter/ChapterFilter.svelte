@@ -1,4 +1,5 @@
 <script lang="ts">
+  import DownToBottom32 from "carbon-icons-svelte/lib/DownToBottom32";
   import { slide } from "svelte/transition";
   import { data } from "$lib/stores/data";
   let open = false;
@@ -17,7 +18,12 @@
   };
 </script>
 
-<button class="toggle" on:click={toggle}>Filtrer efter kapitler</button>
+<div class="toggle" on:click={toggle}>
+  Filtrer efter kapitler<br />
+  <span class="icon" class:open>
+    <DownToBottom32 />
+  </span>
+</div>
 {#if open}
   <div transition:slide>
     <form>
@@ -41,8 +47,17 @@
 {/if}
 
 <style>
-  button {
-    @apply rounded bg-gray-100 hover:bg-gray-200 transition p-2;
+  button,
+  div.toggle {
+    @apply rounded bg-gray-100 hover:bg-gray-200 transition p-2 text-center cursor-pointer;
+  }
+
+  span.icon {
+    @apply inline-block m-auto text-center transition-all;
+  }
+
+  span.icon.open {
+    transform: rotate(180deg);
   }
   div.buttons {
     @apply m-2 flex justify-between;
