@@ -31,7 +31,8 @@
   class:font-bold={item.important}
   class:open={item.open}
   class:hidden={!item.name.includes($data.filters.name) ||
-    !item.chapters.some((chap) => $data.filters.chapters.includes(chap))}
+    !item.chapters.some((chap) => $data.filters.chapters.includes(chap)) ||
+    ($data.filters.fav && !item.favourite)}
 >
   <a href="#{item.slug}" on:click={handleOpen}>
     {item.name}

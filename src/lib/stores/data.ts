@@ -21,6 +21,7 @@ export interface DrugStore {
   filters: {
     chapters: Number[];
     name: string;
+    fav: boolean;
   };
 }
 const initial: DrugStore = {
@@ -33,6 +34,7 @@ const initial: DrugStore = {
   filters: {
     chapters: [],
     name: "",
+    fav: false,
   },
 };
 const normaliseData = (data: Drug[]): DrugStore => {
@@ -98,13 +100,13 @@ function createData() {
       return store;
     });
 
-  const filter = (type: "name" | "chapters", value: string | Number[]) =>
+  const filter = (options: {
+    name?: string;
+    chapters?: Number[];
+    fav?: boolean;
+  }) =>
     update((store) => {
-      if (type === "name") {
-        store.filters.name = value as string;
-      } else {
-        store.filters.chapters = [...value] as Number[];
-      }
+      store.filters = { ...store.filters, ...options };
       return store;
     });
 

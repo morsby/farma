@@ -1,7 +1,7 @@
 <script lang="ts">
   import { data } from "$lib/stores/data";
   const handleChange = (e) => {
-    data.filter("name", e.target.value);
+    data.filter({ name: e.target.value });
   };
 </script>
 
@@ -17,7 +17,7 @@
         viewBox="0 0 24 24"
         class="w-6 h-6"
         class:filter={$data.filters.name}
-        on:click={() => data.filter("name", "")}
+        on:click={() => data.filter({ name: "" })}
       >
         {#if !$data.filters.name}
           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

@@ -4,16 +4,15 @@
   import { data } from "$lib/stores/data";
   let open = false;
   const toggle = () => (open = !open);
-  const selectAll = () => data.filter("chapters", $data.chapters);
-  const selectNone = () => data.filter("chapters", []);
+  const selectAll = () => data.filter({ chapters: $data.chapters });
+  const selectNone = () => data.filter({ chapters: [] });
   const handleClick = (chap: Number) => {
     if ($data.filters.chapters.includes(chap)) {
-      data.filter(
-        "chapters",
-        $data.filters.chapters.filter((c) => c !== chap)
-      );
+      data.filter({
+        chapters: $data.filters.chapters.filter((c) => c !== chap),
+      });
     } else {
-      data.filter("chapters", [...$data.filters.chapters, chap]);
+      data.filter({ chapters: [...$data.filters.chapters, chap] });
     }
   };
 </script>
