@@ -57,4 +57,8 @@
   input {
     @apply py-2 text-sm text-gray-900 bg-gray-100 rounded-md pl-2 pr-10 max-w-full focus:outline-red;
   }
+
+  input:focus {
+    -moz-outline-radius: 0.375rem;
+  }
 </style>

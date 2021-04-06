@@ -16,7 +16,7 @@ export interface Chapter {
   name?: string;
 }
 
-export interface Response {
+export interface DrugResponse {
   length: number;
   data: Drug[];
 }
@@ -25,11 +25,11 @@ import { promises as fs } from "fs";
 import matter from "gray-matter";
 import marked from "marked";
 
-export const parseDrugs = async () => {
-  const dir = await fs.readdir(`src/lib/drugs`);
+export const parseMd = async (path: string): Promise<any> => {
+  const dir = await fs.readdir(path);
   const drugs = await Promise.all(
     dir.map(async (file) => {
-      const content = await fs.readFile(`src/lib/drugs/${file}`);
+      const content = await fs.readFile(`${path}/${file}`);
       const md = matter(content);
       return {
         ...md.data,

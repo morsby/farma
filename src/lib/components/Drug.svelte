@@ -1,7 +1,7 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
 
-  import type { Drug } from "$lib/drugs";
+  import type { Drug } from "$lib/parseMd";
   import { data } from "$lib/stores/data";
   export let drug: Drug;
   const handleClose = () => data.toggle(drug.name);
@@ -15,7 +15,7 @@
   {#if visible}
     <section transition:slide|local>
       <ul>
-        {#each drug.chapters.sort((a, b) => a - b) as chap}
+        {#each drug.chapters.sort((a, b) => a - b) as chap (chap)}
           <li>{chap ? "Kap. " + chap : "Intet kapitel"}</li>
         {/each}
       </ul>

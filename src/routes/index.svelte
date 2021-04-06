@@ -26,17 +26,16 @@
 
 <script lang="ts">
   import Drug from "$lib/components/Drug.svelte";
+  import MainLayout from "$lib/components/MainLayout.svelte";
   import { data } from "$lib/stores/data";
 </script>
 
-<section>
-  {#await $data}
-    <p>Waiting</p>
-  {:then}
+<MainLayout>
+  <section>
     {#each $data.ids as id (id)}
       {#if $data.data.drugs[id].open}
         <Drug drug={$data.data.drugs[id]} />
       {/if}
     {/each}
-  {/await}
-</section>
+  </section>
+</MainLayout>

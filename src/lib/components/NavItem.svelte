@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Drug } from "$lib/drugs";
+  import type { Drug } from "$lib/parseMd";
   import { scrollTo } from "$lib/utils";
   import { data } from "$lib/stores/data";
 
@@ -72,6 +72,7 @@
     @apply p-1 m-0 mr-4 flex;
     display: blocK;
     height: 100%;
+    width: 80%;
   }
 
   .fill {

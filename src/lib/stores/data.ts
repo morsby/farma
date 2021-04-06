@@ -1,4 +1,4 @@
-import type { Chapter, Drug } from "$lib/drugs";
+import type { Chapter, Drug } from "$lib/parseMd";
 import { writable } from "svelte/store";
 
 let favourites = {};
@@ -38,7 +38,8 @@ const initial: DrugStore = {
   },
 };
 const normaliseData = (data: Drug[]): DrugStore => {
-  let normalised: DrugStore = { ...initial };
+  let normalised: DrugStore = JSON.parse(JSON.stringify(initial));
+
   data.map((drug) => {
     normalised.ids.push(drug.name);
     normalised.data.drugs[drug.name] = drug;
