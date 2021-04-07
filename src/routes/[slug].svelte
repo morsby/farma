@@ -9,11 +9,18 @@
       const pages = await res.json();
 
       const pageToGet = pages.find((p) => p.slug === page.params.slug);
-      return {
-        props: {
-          page: pageToGet,
-        },
-      };
+      if (pageToGet) {
+        return {
+          props: {
+            page: pageToGet,
+          },
+        };
+      } else {
+        return {
+          status: 404,
+          error: new Error("Whoops! Siden findes ikke ..."),
+        };
+      }
     }
 
     return {

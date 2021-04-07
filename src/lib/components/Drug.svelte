@@ -19,6 +19,9 @@
           <li>{chap ? "Kap. " + chap : "Intet kapitel"}</li>
         {/each}
       </ul>
+      <div class="date">
+        Opdateret {new Date(drug.date).toLocaleDateString()}
+      </div>
 
       <div>
         {#if drug.body}
@@ -59,6 +62,10 @@
     display: inline-block;
     @apply py-1 px-3 mr-1 bg-red-400 rounded-xl;
     @apply text-sm text-white;
+  }
+
+  div.date {
+    @apply mb-3 text-sm;
   }
 
   button {

@@ -4,7 +4,7 @@
 
 <article>
   <ul>
-    <li><a href="/sider/om">Om siden</a></li>
+    <li><a href="/om">Om siden</a></li>
     <li class="flex-1" />
     <li>
       <div class="inline-icon"><Favorite16 /></div>
