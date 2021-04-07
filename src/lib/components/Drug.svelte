@@ -10,7 +10,7 @@
   const handleMinimize = () => (visible = !visible);
 </script>
 
-<article id={drug.slug} transition:slide>
+<article id={drug.slug} transition:slide|local>
   <h2 class:important={drug.important}>{drug.name}</h2>
   {#if visible}
     <section transition:slide|local>

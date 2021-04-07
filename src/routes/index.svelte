@@ -1,11 +1,6 @@
 <script context="module" lang="ts">
   export const prerender = true;
   import { data as dataStore } from "$lib/stores/data";
-  /**
-   * @param {import('@sveltejs/kit).LoadOptions} options
-   * @returns {import('@sveltejs/kit').Loaded}
-   */
-
   export async function load({ page, fetch, session, context }) {
     const url = "/drugs.json";
     let res = await fetch(url);

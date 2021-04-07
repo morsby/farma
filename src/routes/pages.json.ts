@@ -4,7 +4,7 @@ import { parseMd } from "$lib/parseMd";
  * @param {any} context
  * @returns {import('@sveltejs/kit').Response}
  */
-export async function get(request, context) {
+export async function get() {
   const pages = await parseMd(`src/lib/pages`);
 
   return {
