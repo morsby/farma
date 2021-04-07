@@ -32,3 +32,9 @@ mangler i skrivende stund noget oprydning i metadataene.
 - Styling benytter [TailwindCSS](https://tailwindcss.com/)
 - Hosting på [netlify](https://www.netlify.com/) med serverless functions (via
   netlify-adapteren til SvelteKit)
+
+### Brug
+
+1. `git clone`
+2. `npm install`
+3. `npm run dev`
