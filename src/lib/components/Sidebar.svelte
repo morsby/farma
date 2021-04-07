@@ -1,5 +1,5 @@
 <script>
-  export let sidebarOpen = true;
+  export let sidebarOpen = false;
 </script>
 
 <div id="sidebar" class:sidebar-open={sidebarOpen}>

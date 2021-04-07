@@ -1,5 +1,5 @@
 <script lang="ts">
-  let sidebarOpen = true;
+  let sidebarOpen = false;
   const toggleSidebar = () => (sidebarOpen = !sidebarOpen);
   import Sidebar from "$lib/components/Sidebar.svelte";
   import Main from "$lib/components/Main.svelte";
