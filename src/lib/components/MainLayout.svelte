@@ -4,19 +4,24 @@
   const toggleSidebar = () => (sidebarOpen = !sidebarOpen);
   import Sidebar from "$lib/components/Sidebar.svelte";
   import Main from "$lib/components/Main.svelte";
-  import Nav from "$lib/components/Nav.svelte";
+  import DrugList from "$lib/components/DrugList.svelte";
   import OpenDrugs from "$lib/components/OpenDrugs.svelte";
 </script>
 
 <div id="wrapper">
   {#if sidebars}
     <Sidebar {sidebarOpen}>
-      <Nav />
+      <DrugList />
     </Sidebar>
+
+    <div
+      id="overlay"
+      class:sidebar-open={sidebarOpen}
+      on:click={toggleSidebar}
+    />
   {/if}
 
-  <div id="overlay" class:sidebar-open={sidebarOpen} on:click={toggleSidebar} />
-  <Main {toggleSidebar}>
+  <Main toggleSidebar={sidebars ? toggleSidebar : null}>
     <slot />
   </Main>
   {#if sidebars}

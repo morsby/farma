@@ -3,10 +3,28 @@
 
   import type { Drug } from "$lib/parseMd";
   import { data } from "$lib/stores/data";
+
   export let drug: Drug;
+  let prevDrug: Drug = {
+    name: "",
+    important: 0,
+    chapters: [],
+    hasInfo: 0,
+    sorting: "",
+    slug: "",
+    date: "",
+    body: "",
+  };
   const handleClose = () => data.toggle(drug.name);
 
-  let visible = true;
+  export let flashcard = false;
+  let visible = !flashcard;
+  $: {
+    if (prevDrug.name !== drug.name) {
+      visible = !flashcard;
+    }
+  }
+
   const handleMinimize = () => (visible = !visible);
 </script>
 
@@ -38,7 +56,9 @@
   {/if}
 
   <footer>
-    <button on:click={handleClose}>Luk &#x2715</button>
+    {#if !flashcard}
+      <button on:click={handleClose}>Luk &#x2715</button>
+    {/if}
     <button on:click={handleMinimize}>{visible ? "Skjul –" : "Vis +"}</button>
   </footer>
 </article>

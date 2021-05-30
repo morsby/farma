@@ -14,19 +14,25 @@
 <div id="main-wrapper">
   <header>
     <div id="header-top">
-      <button on:click={toggleSidebar} id="sidebar-toggle">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M4 6H20M4 12H20M4 18H11"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </button>
-      <h1>farma.morsby.dk</h1>
-      {#if anyOpen}
+      {#if toggleSidebar}
+        <button on:click={toggleSidebar} id="sidebar-toggle">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 6H20M4 12H20M4 18H11"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      {/if}
+      <h1><a href="/">farma.morsby.dk</a></h1>
+      {#if toggleSidebar && anyOpen}
         <div class="closeAll">
           <button title="Luk alle" on:click={handleCloseAll}
             ><CloseFilled20 /></button
@@ -50,7 +56,7 @@
   }
 
   header {
-    @apply flex justify-between items-center p-6 lg:hidden;
+    @apply flex justify-between items-center p-6;
   }
 
   #header-top {
@@ -69,6 +75,9 @@
     @apply text-2xl font-medium text-gray-800 flex-1;
   }
 
+  .closeAll {
+    @apply sm:block md:hidden;
+  }
   .closeAll button {
     @apply text-red-400;
   }

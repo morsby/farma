@@ -4,6 +4,9 @@
 
 <div id="sidebar" class:sidebar-open={sidebarOpen}>
   <div id="sidebar-title">Stofliste</div>
+
+  <a id="sidebar-flashcards" href="/flashcards">Flashcards</a>
+
   <nav id="sidebar-nav">
     <slot />
   </nav>
@@ -24,6 +27,11 @@
   div#sidebar-title {
     @apply flex items-center justify-center mt-8;
     @apply text-gray-800 text-2xl font-semibold;
+  }
+
+  a#sidebar-flashcards {
+    @apply block  mx-6 p-2 rounded-lg border border-red-400 text-black hover:bg-red-400 hover:text-white transition-all duration-300;
+    @apply text-center text-black;
   }
 
   nav#sidebar-nav {

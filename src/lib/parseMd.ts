@@ -1,7 +1,7 @@
 export interface Drug {
   name: string;
   important: 0 | 1;
-  chapters: [number];
+  chapters: number[];
   hasInfo: 0 | 1;
   sorting: string;
   slug: string;
