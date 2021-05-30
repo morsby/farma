@@ -1,8 +1,9 @@
 const { tailwindExtractor } = require("tailwindcss/lib/lib/purgeUnusedStyles");
 
 module.exports = {
+  mode: "jit",
   purge: {
-    content: ["./src/**/*.{html,js,svelte,ts}"],
+    content: ["./src/safelist.txt", "./src/**/*.{html,js,svelte,ts}"],
     options: {
       defaultExtractor: (content) => [
         // If this stops working, please open an issue at https://github.com/svelte-add/tailwindcss/issues rather than bothering Tailwind Labs about it

@@ -3,6 +3,8 @@
   import { slide } from "svelte/transition";
   import { data } from "$lib/stores/data";
   let open = false;
+  export let cols = 4;
+
   const toggle = () => (open = !open);
   const selectAll = () => data.filter({ chapters: $data.chapters });
   const selectNone = () => data.filter({ chapters: [] });
@@ -25,9 +27,9 @@
 </div>
 {#if open}
   <div transition:slide>
-    <form>
+    <form class="grid grid-cols-{cols} px-3">
       {#each $data.chapters as chap (chap)}
-        <div class:no-chapter={!chap}>
+        <div class:no-chapter={!chap} class={!chap ? `col-span-${cols}` : ""}>
           <input
             type="checkbox"
             checked={$data.filters.chapters.includes(chap)}
@@ -64,15 +66,12 @@
   .toggle {
     @apply w-full py-3 my-2 rounded-none;
   }
-  form {
-    @apply grid grid-cols-4 px-3;
-  }
 
   div {
     order: 1;
   }
   div.no-chapter {
-    @apply col-span-4 mt-2;
+    @apply mt-2;
     order: 2;
   }
 

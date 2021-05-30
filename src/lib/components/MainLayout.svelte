@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let sidebars = true;
   let sidebarOpen = false;
   const toggleSidebar = () => (sidebarOpen = !sidebarOpen);
   import Sidebar from "$lib/components/Sidebar.svelte";
@@ -8,15 +9,19 @@
 </script>
 
 <div id="wrapper">
-  <Sidebar {sidebarOpen}>
-    <Nav />
-  </Sidebar>
+  {#if sidebars}
+    <Sidebar {sidebarOpen}>
+      <Nav />
+    </Sidebar>
+  {/if}
 
   <div id="overlay" class:sidebar-open={sidebarOpen} on:click={toggleSidebar} />
   <Main {toggleSidebar}>
     <slot />
   </Main>
-  <OpenDrugs />
+  {#if sidebars}
+    <OpenDrugs />
+  {/if}
 </div>
 
 <style>
