@@ -56,7 +56,7 @@
   }
 
   header {
-    @apply flex justify-between items-center p-6;
+    @apply flex justify-between items-center p-6 lg:hidden;
   }
 
   #header-top {

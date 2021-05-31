@@ -41,15 +41,22 @@ const normaliseData = (data: Drug[]): DrugStore => {
   let normalised: DrugStore = JSON.parse(JSON.stringify(initial));
 
   data.map((drug) => {
-    normalised.ids.push(drug.name);
-    normalised.data.drugs[drug.name] = drug;
-
-    drug.chapters.map((chap) => {
+    // convert chapter to a number; if NULL make it 0
+    // also save the chap into the DrugStore
+    drug.chapters = drug.chapters.map((chap) => {
       if (chap === null) {
         chap = 0;
       }
-      normalised.data.chapters[Number(chap)] = { value: Number(chap) };
+      chap = Number(chap);
+      normalised.data.chapters[chap] = { value: chap };
+      return chap;
     });
+
+    // save the drug
+    normalised.ids.push(drug.name);
+    normalised.data.drugs[drug.name] = drug;
+
+    // sort the DrugStore's chapters; setting 0 (no chapter) in the end
     normalised.chapters = Object.keys(normalised.data.chapters)
       .map((str) => Number(str))
       .sort((a, b) => {

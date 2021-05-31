@@ -78,4 +78,8 @@
   input {
     @apply h-6 w-6 rounded;
   }
+
+  div.buttons button {
+    @apply rounded bg-gray-200 hover:bg-gray-300 transition-colors;
+  }
 </style>

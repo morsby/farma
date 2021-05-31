@@ -5,25 +5,10 @@
   import { data } from "$lib/stores/data";
 
   export let drug: Drug;
-  let prevDrug: Drug = {
-    name: "",
-    important: 0,
-    chapters: [],
-    hasInfo: 0,
-    sorting: "",
-    slug: "",
-    date: "",
-    body: "",
-  };
-  const handleClose = () => data.toggle(drug.name);
 
+  const handleClose = () => data.toggle(drug.name);
   export let flashcard = false;
-  let visible = !flashcard;
-  $: {
-    if (prevDrug.name !== drug.name) {
-      visible = !flashcard;
-    }
-  }
+  export let visible = true;
 
   const handleMinimize = () => (visible = !visible);
 </script>
@@ -55,12 +40,12 @@
     </section>
   {/if}
 
-  <footer>
-    {#if !flashcard}
+  {#if !flashcard}
+    <footer>
       <button on:click={handleClose}>Luk &#x2715</button>
-    {/if}
-    <button on:click={handleMinimize}>{visible ? "Skjul –" : "Vis +"}</button>
-  </footer>
+      <button on:click={handleMinimize}>{visible ? "Skjul –" : "Vis +"}</button>
+    </footer>
+  {/if}
 </article>
 
 <style>
