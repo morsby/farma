@@ -61,7 +61,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 <MainLayout sidebars={false}>
-  <p>Vend tilbage til <a href="/">stoflisten</a>.</p>
+  <p><a href="/">Tilbage til stoflisten</a>.</p>
   <h1>Flashcards</h1>
   <div>
     <ChapterFilter cols={8} />
